@@ -1,0 +1,20 @@
+/* memberikasn kode CSS untuk mengatur tampilan halaman web.*/
+
+/* mengatur tampilan untuk h1 */
+h1 {
+    color: blue;
+    font-size: 24px;
+}
+
+/* mengatur tampilan untuk h2 */
+h2 {
+    color: green;
+    font-size: 20px;
+}
+
+/* mengatur tampilan untuk p */
+p {
+    color: red;
+    font-size: 16px;
+    line-height: 1.5;
+}
