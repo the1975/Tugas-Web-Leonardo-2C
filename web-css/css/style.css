@@ -56,10 +56,44 @@ body {
     width: 100%;
     height: 300px;
     overflow: hidden;
+    /* atur ukuran gambar */
+    background-size: cover;
+   /* mengatur posisi gambar */
+    background-position: center;
+    /* mengatur garis tepi tebal dan warna merah maroon */
+    border: 5px solid maroon;
 }
 
 .banner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* untuk isi */
+.isi {
+    padding: 20px;
+}
+
+.isi h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.isi penulis {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.isi penulis a {
+    text-decoration: none;
+    color: navy;
+}
+
+.isi p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
 }
