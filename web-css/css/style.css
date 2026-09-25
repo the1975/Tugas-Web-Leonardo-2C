@@ -39,3 +39,27 @@ body {
     margin-top: 20px;
 }
 
+/* menghilangkan garis bawah link */
+.nav li a {
+    text-decoration: none;
+    color: navy;
+}
+
+/* ketika navigasi disorot mouse */
+.nav li a:hover {
+    background-color: lightblue;
+    color: white;
+}
+
+/* untuk banner css */
+.banner {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
