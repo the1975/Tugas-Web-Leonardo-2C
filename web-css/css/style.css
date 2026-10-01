@@ -57,6 +57,7 @@ body {
     width: 100%;
     height: 300px;
     overflow: hidden;
+    background-image: url('../img/leclerc.jpg');
     /* atur ukuran gambar */
     background-size: cover;
    /* mengatur posisi gambar */
