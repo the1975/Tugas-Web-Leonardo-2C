@@ -13,6 +13,14 @@
       --font-mono: "JetBrains Mono", monospace;
       --color-paper: #e8e8e4;
       --color-ink: #1c1c1c;
+
+    @theme {
+    --animate-marquee: marquee 35s linear infinite;
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+         }
+        }
     }
 
     .reveal {
@@ -191,6 +199,27 @@
     </div>
     </section>
 
+    </section>
+
+    <!-- GALLERY -->
+    <section class="py-24 overflow-hidden">
+    <div class="px-8 md:px-16 mb-10">
+        <p class="reveal font-mono text-xs tracking-widest text-ink/50 mb-4">DOCUMENTATION</p>
+        <h2 class="reveal font-serif text-5xl md:text-7xl">Moments</h2>
+    </div>
+
+    <div class="flex w-max animate-marquee hover:[animation-play-state:paused] gap-4">
+        <!-- set 1 -->
+        <img src="foto1.jpg" alt="Dokumentasi 1" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+        <img src="foto2.jpg" alt="Dokumentasi 2" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+        <img src="foto3.jpg" alt="Dokumentasi 3" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+        <img src="foto4.jpg" alt="Dokumentasi 4" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+        <!-- set 2 (duplikat biar loop mulus) -->
+        <img src="foto1.jpg" alt="" aria-hidden="true" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+        <img src="foto2.jpg" alt="" aria-hidden="true" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+        <img src="foto3.jpg" alt="" aria-hidden="true" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+        <img src="foto4.jpg" alt="" aria-hidden="true" class="w-72 h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-500">
+    </div>
     </section>
 
     <script>
