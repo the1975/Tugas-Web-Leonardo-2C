@@ -14,6 +14,17 @@
       --color-paper: #e8e8e4;
       --color-ink: #1c1c1c;
     }
+
+    .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.show {
+    opacity: 1;
+    transform: none;
+    }
+
   </style>
 </head>
     <body class="bg-paper text-ink font-sans">
@@ -117,7 +128,7 @@
         <span class="font-mono text-[10px] tracking-widest">NUMPY</span>
         </div>
         <div class="border border-paper/15 rounded-2xl p-5 flex flex-col items-center gap-3 hover:bg-paper/5 hover:-translate-y-1 transition">
-        <img src="https://cdn.simpleicons.org/matplotlib/white" alt="Matplotlib" class="w-9 h-9">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib" class="w-9 h-9">
         <span class="font-mono text-[10px] tracking-widest">MATPLOTLIB</span>
         </div>
         <div class="border border-paper/15 rounded-2xl p-5 flex flex-col items-center gap-3 hover:bg-paper/5 hover:-translate-y-1 transition">
@@ -126,15 +137,20 @@
         </div>
     </div>
 
-    <!-- SCRAPING & API (chip teks) -->
-    <h3 class="font-serif italic text-3xl mb-4">Scraping & API</h3>
-    <div class="flex flex-wrap gap-3">
-        <span class="border border-paper/20 rounded-full px-4 py-2 font-mono text-xs tracking-widest hover:bg-paper hover:text-ink transition">BEAUTIFULSOUP</span>
-        <span class="border border-paper/20 rounded-full px-4 py-2 font-mono text-xs tracking-widest hover:bg-paper hover:text-ink transition">REQUESTS</span>
-        <span class="border border-paper/20 rounded-full px-4 py-2 font-mono text-xs tracking-widest hover:bg-paper hover:text-ink transition">REST API</span>
-        <span class="border border-paper/20 rounded-full px-4 py-2 font-mono text-xs tracking-widest hover:bg-paper hover:text-ink transition">JSON</span>
-    </div>
+    
     </section>
 
+    <script>
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('show');
+            io.unobserve(e.target);
+        }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
     </body>
 </html>
