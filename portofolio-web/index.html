@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porto Gua</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", sans-serif;
+      --font-serif: "Instrument Serif", serif;
+      --font-mono: "JetBrains Mono", monospace;
+      --color-paper: #e8e8e4;
+      --color-ink: #1c1c1c;
+    }
+  </style>
+</head>
+    <body class="bg-paper text-ink font-sans">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-8 md:px-16 py-6">
+        <a href="#" class="flex items-center gap-3">
+        <span class="w-7 h-7 rounded-full bg-ink text-paper grid place-items-center font-serif italic text-sm">N</span>
+        <span class="font-mono text-[10px] tracking-widest">NAMA / PORTFOLIO</span>
+        </a>
+        <nav class="hidden md:flex gap-8 font-mono text-xs tracking-widest">
+        <a href="#about" class="hover:opacity-50 transition">ABOUT</a>
+        <a href="#projects" class="hover:opacity-50 transition">PROJECTS</a>
+        <a href="#contact" class="hover:opacity-50 transition">CONTACT</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="min-h-screen px-8 md:px-16 pt-28 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+        <p class="font-mono text-xs tracking-widest text-ink/50 mb-4">KOTA · INDONESIA</p>
+        <h1 class="font-serif text-6xl md:text-8xl leading-none">
+            Hi, I'm <em>Nama Lu</em>.
+        </h1>
+        <p class="mt-4 text-2xl font-light">Information Systems Student</p>
+        <a href="#" class="inline-block mt-8 bg-ink text-paper font-mono text-xs tracking-widest px-5 py-2 rounded-full hover:scale-105 transition">
+            RESUME
+        </a>
+        </div>
+
+        <div class="relative bg-ink rounded-3xl aspect-[3/4] max-w-sm w-full justify-self-center md:justify-self-end overflow-hidden shadow-2xl">
+        <!-- ganti src dengan foto lu -->
+        <img src="foto.jpg" alt="Foto" class="w-full h-full object-cover grayscale">
+        <div class="absolute bottom-4 inset-x-4 bg-black/60 backdrop-blur rounded-xl px-4 py-3 text-paper flex items-center justify-between">
+            <div>
+            <p class="text-xs font-semibold">@username</p>
+            <p class="text-[11px] opacity-60">Available for work!</p>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        </div>
+        </div>
+    </section>
+
+    </body>
+</html>
