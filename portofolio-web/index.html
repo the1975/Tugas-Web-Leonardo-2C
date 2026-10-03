@@ -168,6 +168,23 @@
                hover:bg-paper hover:text-ink transition;
       }
     }
+
+    /* ========== KARTU BERTUMPUK ========== */
+      .stack-card {
+        position: sticky;
+        transform-origin: 50% 0;
+        will-change: transform;
+      }
+      .stack-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        border-radius: inherit;
+        background: #000;
+        opacity: var(--dim, 0);
+        pointer-events: none;
+      }
   </style>
 </head>
 
@@ -217,7 +234,7 @@
 
 
       <!-- ============ HERO ============ -->
-      <section class="hero relative min-h-screen bg-paper rounded-3xl overflow-hidden px-6 md:px-16 pt-36 pb-16 grid md:grid-cols-2 gap-12 items-center shadow-2xl">
+      <section class="hero stack-card relative min-h-screen bg-paper rounded-3xl overflow-hidden px-6 md:px-16 pt-36 pb-16 grid md:grid-cols-2 gap-12 items-center shadow-2xl">
 
         <div class="hero-ocean"></div>
 
@@ -374,7 +391,7 @@
 
 
       <!-- ============ ABOUT ============ -->
-      <section id="about" class="about-section scroll-mt-24 rounded-3xl overflow-hidden px-6 md:px-16 py-24 text-white shadow-2xl">
+      <section id="about" class="stack-card about-section min-h-screen flex flex-col justify-center scroll-mt-24 rounded-3xl overflow-hidden px-6 md:px-16 py-24 text-white shadow-2xl">
 
         <p class="reveal font-mono text-xs tracking-widest text-white/60 mb-4">
   ABOUT ME
@@ -419,9 +436,13 @@
 
         </div>
 
+        
+
       </section>
 
-
+    <!-- ============ KARTU PUTIH: SKILLS sampai FOOTER ============ -->
+    <div class="relative z-10 bg-paper rounded-3xl overflow-hidden shadow-2xl">
+      
       <!-- ============ SKILLS ============ -->
       <section
         id="skills"
@@ -859,6 +880,62 @@
 
 
     type();
+
+    /* ================================================
+   4. KARTU BERTUMPUK (stacking)
+   ================================================== */
+    const stackCards = [...document.querySelectorAll('.stack-card')];
+    const mqStack = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)');
+    
+    function updateStack() {
+      if (!mqStack.matches) return;
+    
+      stackCards.forEach((card) => {
+        const next = card.nextElementSibling;
+        if (!next) return;
+    
+        // seberapa jauh kartu berikutnya sudah menimpa (0 sampai 1)
+        const raw = Math.min(1, Math.max(0, 1 - next.getBoundingClientRect().top / window.innerHeight));
+    
+        // smoothstep: awal dan akhir gerakan melambat, jadi terasa ngalir
+        const p = raw * raw * (3 - 2 * raw);
+    
+        card.style.transform = `scale(${1 - 0.035 * p})`;
+        card.style.setProperty('--dim', (0.3 * p).toFixed(3));
+        card.style.visibility = raw >= 0.995 ? 'hidden' : '';
+      });
+    }
+    
+    function layoutStack() {
+      stackCards.forEach((card) => {
+        if (mqStack.matches) {
+          card.style.position = 'sticky';
+          card.style.top = Math.min(24, window.innerHeight - card.offsetHeight - 24) + 'px';
+        } else {
+          // HP / reduced motion: kartu biasa saja, tanpa efek
+          card.style.position = 'static';
+          card.style.top = '';
+          card.style.transform = '';
+          card.style.visibility = '';
+          card.style.setProperty('--dim', 0);
+        }
+      });
+      updateStack();
+    }
+    
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateStack();
+        ticking = false;
+      });
+    }, { passive: true });
+    
+    window.addEventListener('resize', layoutStack);
+    window.addEventListener('load', layoutStack);
+    layoutStack();
 
   </script>
 
