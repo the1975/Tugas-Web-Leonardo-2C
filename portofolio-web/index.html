@@ -185,6 +185,72 @@
         opacity: var(--dim, 0);
         pointer-events: none;
       }
+
+    /* ========== IKON TECH STACK KECIL ========== */
+.tech-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: .75rem;
+  border: 1px solid rgba(232, 232, 228, .15);
+  background: rgba(232, 232, 228, .03);
+  transition: background-color .3s, border-color .3s, transform .3s;
+}
+.tech-icon img {
+  width: 1.25rem;
+  height: 1.25rem;
+  filter: grayscale(1);
+  opacity: .75;
+  transition: filter .3s, opacity .3s;
+}
+.tech-icon:hover {
+  background: rgba(232, 232, 228, .08);
+  border-color: rgba(232, 232, 228, .35);
+  transform: translateY(-3px);
+}
+.tech-icon:hover img { filter: none; opacity: 1; }
+
+.tech-tip {
+  position: absolute;
+  bottom: calc(100% + .5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: .25rem .5rem;
+  border-radius: .375rem;
+  background: #e8e8e4;
+  color: #1c1c1c;
+  font: 10px "JetBrains Mono", monospace;
+  letter-spacing: .1em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.tech-icon:hover .tech-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ========== KARTU SERTIFIKAT (COVERFLOW) ========== */
+.cert-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .6);
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1), opacity .5s ease, filter .5s ease;
+  will-change: transform;
+}
+.cert-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+#certInfo { transition: opacity .25s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-card { transition: none; }
+}
   </style>
 </head>
 
@@ -443,86 +509,83 @@
     <!-- ============ KARTU PUTIH: SKILLS sampai FOOTER ============ -->
     <div class="relative z-10 bg-paper rounded-3xl overflow-hidden shadow-2xl">
       
-      <!-- ============ SKILLS ============ -->
-      <section
-        id="skills"
-        class="scroll-mt-24 px-6 md:px-16 py-24 bg-ink text-paper">
+      <!-- ============ SKILLS: TECH STACK + SERTIFIKAT ============ -->
+<section id="skills" class="scroll-mt-24 px-6 md:px-16 py-24 bg-ink text-paper">
 
-        <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-12">
-          TECH STACK
-        </p>
+  <!-- TECH STACK (ikon kecil) -->
+  <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-8">TECH STACK</p>
 
+  <div class="reveal flex flex-wrap gap-x-12 gap-y-8 mb-24">
 
-        <!-- WEB -->
-        <h3 class="reveal font-serif italic text-3xl mb-4">
-          Web
-        </h3>
+    <div>
+      <p class="font-mono text-[10px] tracking-widest text-paper/40 mb-3">WEB</p>
+      <div class="flex gap-3">
+        <div class="tech-icon" role="img" aria-label="HTML"><img src="https://cdn.simpleicons.org/html5" alt=""><span class="tech-tip">HTML</span></div>
+        <div class="tech-icon" role="img" aria-label="CSS"><img src="https://cdn.simpleicons.org/css" alt=""><span class="tech-tip">CSS</span></div>
+        <div class="tech-icon" role="img" aria-label="JavaScript"><img src="https://cdn.simpleicons.org/javascript" alt=""><span class="tech-tip">JAVASCRIPT</span></div>
+        <div class="tech-icon" role="img" aria-label="Tailwind"><img src="https://cdn.simpleicons.org/tailwindcss" alt=""><span class="tech-tip">TAILWIND</span></div>
+      </div>
+    </div>
 
+    <div>
+      <p class="font-mono text-[10px] tracking-widest text-paper/40 mb-3">DATA &amp; COLAB</p>
+      <div class="flex gap-3">
+        <div class="tech-icon" role="img" aria-label="Python"><img src="https://cdn.simpleicons.org/python" alt=""><span class="tech-tip">PYTHON</span></div>
+        <div class="tech-icon" role="img" aria-label="Pandas"><img src="https://cdn.simpleicons.org/pandas/white" alt=""><span class="tech-tip">PANDAS</span></div>
+        <div class="tech-icon" role="img" aria-label="NumPy"><img src="https://cdn.simpleicons.org/numpy/white" alt=""><span class="tech-tip">NUMPY</span></div>
+        <div class="tech-icon" role="img" aria-label="Matplotlib"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt=""><span class="tech-tip">MATPLOTLIB</span></div>
+        <div class="tech-icon" role="img" aria-label="Colab"><img src="https://cdn.simpleicons.org/googlecolab" alt=""><span class="tech-tip">COLAB</span></div>
+      </div>
+    </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/html5" alt="HTML" class="w-9 h-9">
-            <span class="tech-label">HTML</span>
-          </div>
-
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/css" alt="CSS" class="w-9 h-9">
-            <span class="tech-label">CSS</span>
-          </div>
-
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript" class="w-9 h-9">
-            <span class="tech-label">JAVASCRIPT</span>
-          </div>
-
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind" class="w-9 h-9">
-            <span class="tech-label">TAILWIND</span>
-          </div>
-
-        </div>
+  </div>
 
 
-        <!-- DATA -->
-        <h3 class="reveal font-serif italic text-3xl mb-4">
-          Data and Colab
-        </h3>
+  <!-- SERTIFIKAT -->
+  <div class="flex items-end justify-between gap-6 mb-6">
+    <div>
+      <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-4">ACHIEVEMENTS</p>
+      <h2 class="reveal font-serif text-5xl md:text-7xl">Certificates</h2>
+      <p class="reveal mt-3 text-sm font-light text-paper/60">Sertifikat dan pelatihan yang sudah saya selesaikan.</p>
+    </div>
 
+    <a href="#" target="_blank" rel="noopener"
+       class="reveal hidden md:inline-block font-mono text-xs tracking-widest border border-paper/30 rounded-full px-5 py-2 hover:bg-paper hover:text-ink transition">
+      LIHAT SEMUA →
+    </a>
+  </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-12">
+  <div id="certStage" tabindex="0"
+       class="relative overflow-hidden select-none touch-pan-y py-10 outline-none"
+       style="perspective: 1400px;">
+    <div id="certTrack" class="relative h-[220px] sm:h-[280px] md:h-[340px]"></div>
+  </div>
 
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/python" alt="Python" class="w-9 h-9">
-            <span class="tech-label">PYTHON</span>
-          </div>
+  <div id="certInfo" class="mt-4 text-center max-w-2xl mx-auto">
+    <h3 id="certTitle" class="font-serif text-3xl md:text-5xl"></h3>
+    <p id="certMeta" class="mt-3 font-mono text-[11px] tracking-widest text-paper/50"></p>
+    <p id="certDesc" class="mt-4 text-sm font-light text-paper/70 leading-relaxed"></p>
+    <a id="certLink" href="#" target="_blank" rel="noopener"
+       class="inline-block mt-5 font-mono text-xs tracking-widest border-b border-paper/40 hover:border-paper transition">
+      LIHAT SERTIFIKAT →
+    </a>
+  </div>
 
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/pandas/white" alt="Pandas" class="w-9 h-9">
-            <span class="tech-label">PANDAS</span>
-          </div>
+  <div class="mt-10 flex items-center justify-center gap-6">
+    <button id="certPrev" aria-label="Sebelumnya"
+            class="w-11 h-11 grid place-items-center rounded-full border border-paper/25 hover:bg-paper hover:text-ink transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
 
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/numpy/white" alt="NumPy" class="w-9 h-9">
-            <span class="tech-label">NUMPY</span>
-          </div>
+    <span id="certCount" class="font-mono text-xs tracking-widest text-paper/60"></span>
 
-          <div class="reveal tech-card">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg"
-              alt="Matplotlib"
-              class="w-9 h-9">
-            <span class="tech-label">MATPLOTLIB</span>
-          </div>
+    <button id="certNext" aria-label="Berikutnya"
+            class="w-11 h-11 grid place-items-center rounded-full border border-paper/25 hover:bg-paper hover:text-ink transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
 
-          <div class="reveal tech-card">
-            <img src="https://cdn.simpleicons.org/googlecolab" alt="Colab" class="w-9 h-9">
-            <span class="tech-label">COLAB</span>
-          </div>
-
-        </div>
-
-      </section>
+</section>
 
 
       <!-- ============ PROJECTS ============ -->
@@ -938,6 +1001,128 @@
     layoutStack();
 
   </script>
+
+  <script>
+(() => {
+  /* ====== DATA SERTIFIKAT: edit / tambah di sini saja ====== */
+  const certs = [
+    { title: 'Nama Sertifikat 1', issuer: 'Penerbit / Lembaga', date: '2026',
+      desc: 'Satu atau dua kalimat tentang apa yang dipelajari dari sertifikat ini.',
+      image: 'img/sertifikat1.jpg', link: '#' },
+    { title: 'Nama Sertifikat 2', issuer: 'Penerbit / Lembaga', date: '2026',
+      desc: 'Satu atau dua kalimat tentang apa yang dipelajari dari sertifikat ini.',
+      image: 'img/sertifikat2.jpg', link: '#' },
+    { title: 'Nama Sertifikat 3', issuer: 'Penerbit / Lembaga', date: '2025',
+      desc: 'Satu atau dua kalimat tentang apa yang dipelajari dari sertifikat ini.',
+      image: 'img/sertifikat3.jpg', link: '#' },
+    { title: 'Nama Sertifikat 4', issuer: 'Penerbit / Lembaga', date: '2025',
+      desc: 'Satu atau dua kalimat tentang apa yang dipelajari dari sertifikat ini.',
+      image: 'img/sertifikat4.jpg', link: '#' }
+  ];
+
+  const stage = document.getElementById('certStage');
+  const track = document.getElementById('certTrack');
+  const info  = document.getElementById('certInfo');
+  const elTitle = document.getElementById('certTitle');
+  const elMeta  = document.getElementById('certMeta');
+  const elDesc  = document.getElementById('certDesc');
+  const elLink  = document.getElementById('certLink');
+  const elCount = document.getElementById('certCount');
+  const btnPrev = document.getElementById('certPrev');
+  const btnNext = document.getElementById('certNext');
+
+  if (!stage || !track) return;
+
+  let active = 0;
+  let startX = null;
+  let dragged = false;
+
+  /* buat kartu dari data */
+  const cards = certs.map((c, i) => {
+    const card = document.createElement('div');
+    card.className = 'cert-card';
+    card.innerHTML =
+      '<img src="' + c.image + '" alt="' + c.title + '" draggable="false" loading="lazy" onerror="this.style.opacity=0">';
+
+    card.addEventListener('click', () => {
+      if (dragged) { dragged = false; return; }
+      if (i === active) {
+        if (c.link && c.link !== '#') window.open(c.link, '_blank', 'noopener');
+      } else {
+        go(i);
+      }
+    });
+
+    track.appendChild(card);
+    return card;
+  });
+
+  /* posisi tiap kartu relatif terhadap kartu aktif */
+  function layout() {
+    cards.forEach((card, i) => {
+      const d = i - active;
+      const a = Math.abs(d);
+      const scale = Math.max(0.6, 1 - 0.13 * a);
+
+      card.style.transform =
+        'translateX(calc(-50% + ' + (d * 58) + '%)) rotateY(' + (-d * 12) + 'deg) scale(' + scale + ')';
+      card.style.opacity = a === 0 ? 1 : a === 1 ? 0.75 : a === 2 ? 0.3 : 0;
+      card.style.filter = 'brightness(' + (1 - 0.25 * Math.min(a, 2)) + ')';
+      card.style.zIndex = String(10 - a);
+      card.style.pointerEvents = a > 2 ? 'none' : 'auto';
+      card.style.cursor = 'pointer';
+    });
+  }
+
+  /* teks di bawah kartu (pudar dulu, lalu ganti isi) */
+  function renderInfo() {
+    const c = certs[active];
+    info.style.opacity = 0;
+
+    setTimeout(() => {
+      elTitle.textContent = c.title;
+      elMeta.textContent = (c.issuer + ' · ' + c.date).toUpperCase();
+      elDesc.textContent = c.desc;
+      elLink.href = c.link || '#';
+      info.style.opacity = 1;
+    }, 180);
+
+    elCount.textContent = String(active + 1).padStart(2, '0') + ' / ' + String(certs.length).padStart(2, '0');
+    btnPrev.style.opacity = active === 0 ? 0.3 : 1;
+    btnNext.style.opacity = active === certs.length - 1 ? 0.3 : 1;
+  }
+
+  function go(n) {
+    active = Math.max(0, Math.min(certs.length - 1, n));
+    layout();
+    renderInfo();
+  }
+
+  btnPrev.addEventListener('click', () => go(active - 1));
+  btnNext.addEventListener('click', () => go(active + 1));
+
+  /* keyboard */
+  stage.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') go(active - 1);
+    if (e.key === 'ArrowRight') go(active + 1);
+  });
+
+  /* geser (drag / swipe) */
+  stage.addEventListener('pointerdown', (e) => { startX = e.clientX; dragged = false; });
+  stage.addEventListener('pointerup', (e) => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    if (Math.abs(dx) > 40) {
+      dragged = true;
+      go(active + (dx < 0 ? 1 : -1));
+    }
+  });
+  stage.addEventListener('pointercancel', () => { startX = null; });
+
+  go(0);
+})();
+</script>
 
 </body>
 </html>
