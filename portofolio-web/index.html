@@ -41,6 +41,11 @@
       background-attachment: fixed;
     }
 
+    .sea-mask {
+      -webkit-mask: url('img/sobekan-mask.webp') center / cover no-repeat;
+      mask: url('img/sobekan-mask.webp') center / cover no-repeat;
+    }
+
     /* ========== ANIMASI MUNCUL SAAT SCROLL ========== */
     .reveal {
       opacity: 0;
@@ -374,6 +379,7 @@
     /* 3. Teks mengetik di bawah nama */
     const words = ['Frontend Developer', 'Data Analyst'];
     const typedEl = document.getElementById('typed');
+    const typedEls = document.querySelectorAll('.typed');
     let wordIndex = 0;
     let charIndex = 0;
     let deleting = false;
