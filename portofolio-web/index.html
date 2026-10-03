@@ -258,7 +258,7 @@
   width: var(--cell, 12px);
   height: var(--cell, 12px);
   border-radius: calc(var(--cell, 12px) * .25);
-  background: rgba(28, 28, 28, .07);
+  background: rgba(28, 28, 28, 0.07058823529411765);
 }
     
 .gh-cell[data-level="1"] { background: #bfe3cf; }
@@ -1231,7 +1231,7 @@
 
     /* ukuran kotak menyesuaikan lebar kartu (min 12px, maks 24px) */
 const weekCount = Math.ceil((days.length + parse(days[0].date).getDay()) / 7);
-CELL = Math.max(12, Math.min(24, Math.floor((scroller.clientWidth - LABEL_W - GAP * (weekCount - 1)) / weekCount)));
+CELL = Math.max(12, Math.min(28, Math.floor((scroller.clientWidth - LABEL_W - GAP * (weekCount - 1)) / weekCount)));
 cal.style.setProperty('--cell', CELL + 'px');
 
     /* ---- statistik ---- */
