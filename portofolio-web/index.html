@@ -388,15 +388,15 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
     justify-content: center;
 
     background-image:
-        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-        url("../img/leopard1.jpeg");
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url("img/leopard1.jpeg");
 
     background-size: cover;
     background-position: center;
 
     overflow: hidden;
 
-    animation: introFade 0.8s ease 2.4s forwards;
+    animation: introFade 0.8s ease 3.5s forwards;
 }
 
 .intro-content {
@@ -470,7 +470,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
 
     transform: translateY(100%);
 
-    animation: introPanel 1s cubic-bezier(0.77, 0, 0.175, 1) 2.1s forwards;
+    animation: introPanel 1s cubic-bezier(0.77, 0, 0.175, 1) 3s forwards;
 }
 
 
@@ -1890,8 +1890,8 @@ window.addEventListener('resize', () => {
         const loader = document.getElementById("intro-loader");
 
         setTimeout(() => {
-            loader.remove();
-        }, 3300);
+          loader.remove();
+      }, 4400);
     });
 </script>
 
