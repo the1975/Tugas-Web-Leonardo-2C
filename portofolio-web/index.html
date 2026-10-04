@@ -22,6 +22,7 @@
 
       --color-paper: #e8e8e4;
       --color-ink: #1c1c1c;
+      --color-night: #0e1116;
 
       --animate-marquee: marquee 35s linear infinite;
       --animate-reveal: reveal 1.2s cubic-bezier(.77, 0, .18, 1) both;
@@ -582,7 +583,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
       <section id="about" class="stack-card about-section flex flex-col justify-center scroll-mt-24 rounded-3xl overflow-hidden px-6 md:px-16 py-28 md:py-40 text-white shadow-2xl">
 
         <div id="aboutGlow" class="pointer-events-none absolute inset-0"
-     style="background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 35%), rgba(70,130,255,.18), transparent 60%);"></div>
+     style="background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 35%), rgb(28, 28, 28), transparent 60%);"></div>
 
         <div class="reveal relative mx-auto w-full max-w-6xl">
 
@@ -628,7 +629,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
     <div class="relative z-10 bg-paper rounded-3xl overflow-hidden shadow-2xl">
       
       <!-- ============ SKILLS: TECH STACK + SERTIFIKAT ============ -->
-<section id="skills" class="scroll-mt-24 px-6 md:px-16 py-24 bg-ink text-paper">
+<section id="skills" class="scroll-mt-24 px-6 md:px-16 py-24 bg-night text-paper">
 
   <!-- TECH STACK (ikon kecil) -->
   <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-8">TECH STACK</p>
@@ -936,7 +937,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
 
 
       <!-- ============ CONTACT ============ -->
-      <section id="contact" class="scroll-mt-24 px-6 md:px-16 py-28 bg-ink text-paper text-center">
+      <section id="contact" class="scroll-mt-24 px-6 md:px-16 py-28 bg-night text-paper text-center">
 
   <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-6">GET IN TOUCH</p>
 
@@ -998,7 +999,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
     <div class="relative p-6 md:p-8 text-left">
 
       <button type="button" id="modalClose" aria-label="Tutup"
-              class="absolute top-4 right-4 w-9 h-9 grid place-items-center rounded-full border border-paper/20 hover:bg-paper hover:text-ink transition">
+              class="absolute top-4 right-4 w-9 h-9 grid place-items-center rounded-full border border-paper/20 hover:bg-paper hover:text-night transition">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 6 6 18M6 6l12 12"/>
         </svg>
@@ -1028,7 +1029,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display: none;">
 
         <button id="sendBtn" type="submit"
-                class="w-full rounded-xl bg-paper text-ink py-3 font-mono text-xs tracking-widest hover:opacity-90 transition disabled:opacity-50">
+                class="w-full rounded-xl bg-paper text-night py-3 font-mono text-xs tracking-widest hover:opacity-90 transition disabled:opacity-50">
           SEND MESSAGE
         </button>
 
@@ -1043,7 +1044,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
 
       <!-- ============ FOOTER ============ -->
       <footer
-        class="px-6 md:px-16 py-6 bg-ink text-paper/40 border-t border-paper/10 flex justify-between font-mono text-[10px] tracking-widest">
+        class="px-6 md:px-16 py-6 bg-night text-paper/40 border-t border-paper/10 flex justify-between font-mono text-[10px] tracking-widest">
 
         <span>
           © 2026 LEONARDO YANUARIANTO
