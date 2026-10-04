@@ -9,14 +9,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
 
   <style type="text/tailwindcss">
 
     /* ========== TEMA: font, warna, animasi ========== */
     @theme {
       --font-sans: "Manrope", sans-serif;
-      --font-serif: "Instrument Serif", serif;
+      --font-serif: "Space Grotesk", sans-serif;
       --font-mono: "JetBrains Mono", monospace;
       --font-tech: "Space Grotesk", sans-serif;
 
@@ -46,6 +46,13 @@
           clip-path: inset(-20% -5% -20% -5%);
         }
       }
+    }
+
+    /* ========== FONT: SATU GAYA MODERN ========== */
+    @layer base {
+      body { font-synthesis-style: none; }
+      .font-serif { letter-spacing: -0.03em; font-weight: 600; }
+      em { font-style: normal; }
     }
 
 
@@ -436,24 +443,16 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
           </p>
 
 
-          <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95]">
-
-            <span class="block animate-reveal">
-              Hi, I'm
-            </span>
-
-            <em class="block animate-reveal" style="animation-delay: .4s">
-              Leonardo.
-            </em>
-
+          <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
+            <span class="block animate-reveal font-light text-ink/50">Hi, I'm</span>
+            <em class="block animate-reveal" style="animation-delay: .4s">Leonardo.</em>
           </h1>
 
 
           <!-- TEXT TYPING -->
-          <p class="mt-5 text-2xl md:text-3xl font-light min-h-[2.5rem]">
-            <span id="typed"></span>
-
-            <span class="inline-block w-[2px] h-7 bg-ink ml-1 align-middle animate-pulse"></span>
+          <p class="mt-5 font-mono text-lg md:text-xl tracking-wide text-ink/70 min-h-[2.5rem]">
+            <span class="text-ink/30">&gt;</span>
+            <span id="typed"></span><span class="inline-block w-[10px] h-5 bg-ink ml-1 align-middle animate-pulse"></span>
           </p>
 
 
@@ -943,9 +942,9 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
 
   <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-6">GET IN TOUCH</p>
 
-  <h2 id="contactTitle" class="bounce-title reveal font-serif text-5xl sm:text-6xl md:text-9xl leading-none">
-    Let's work <em>together</em>
-  </h2>
+  <h2 id="contactTitle" class="bounce-title reveal font-serif font-light text-4xl sm:text-5xl md:text-7xl leading-none">
+  Let's work <em class="font-semibold">together</em>
+</h2>
 
   <!-- ikon: 2 pertama membuka popup, 3 berikutnya link sosmed -->
   <div class="reveal mt-14 flex flex-wrap items-center justify-center gap-3">
