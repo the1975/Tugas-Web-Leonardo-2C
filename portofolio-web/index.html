@@ -258,14 +258,13 @@
   width: var(--cell, 12px);
   height: var(--cell, 12px);
   border-radius: calc(var(--cell, 12px) * .25);
-  background: rgba(28, 28, 28, 0.07058823529411765);
+  background: rgba(232, 232, 228, .08);
 }
-    
-.gh-cell[data-level="1"] { background: #bfe3cf; }
-.gh-cell[data-level="2"] { background: #7cc9a1; }
-.gh-cell[data-level="3"] { background: #34a874; }
-.gh-cell[data-level="4"] { background: #0f7a52; }
-.gh-cell:hover { outline: 1px solid rgba(28, 28, 28, .55); }
+.gh-cell[data-level="1"] { background: #0e4429; }
+.gh-cell[data-level="2"] { background: #006d32; }
+.gh-cell[data-level="3"] { background: #26a641; }
+.gh-cell[data-level="4"] { background: #39d353; }
+.gh-cell:hover { outline: 1px solid rgba(232, 232, 228, .6); }
     
   </style>
 </head>
@@ -722,62 +721,60 @@
       </section>
 
       <!-- ============ GITHUB CONTRIBUTIONS ============ -->
-<section id="github" class="scroll-mt-24 px-6 md:px-16 pb-24">
 
-  <div class="border-t border-ink/20 pt-16 grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
-
-    <!-- kiri: angka ringkas -->
-    <div>
-      <p class="reveal font-mono text-xs tracking-widest text-ink/50 mb-4">CODING ACTIVITY</p>
-      <h2 class="reveal font-serif text-4xl md:text-5xl leading-tight">GitHub Contributions</h2>
-
-      <div class="reveal mt-8">
-        <p class="font-mono text-[10px] tracking-widest text-ink/50">LAST 365 DAYS</p>
-        <p id="ghTotal" class="font-serif text-6xl leading-none mt-2">–</p>
-        <p class="text-sm font-light text-ink/60 mt-1">contributions in the last year</p>
-      </div>
-
-      <div class="reveal mt-6 grid grid-cols-2 gap-4">
-        <div class="rounded-xl border border-ink/10 px-4 py-3">
-          <p class="font-mono text-[10px] tracking-widest text-ink/50">LONGEST STREAK</p>
-          <p id="ghStreak" class="font-serif text-2xl mt-1">–</p>
+    <section id="github" class="scroll-mt-24 px-6 md:px-16 py-24 bg-ink text-paper">
+    
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
+    
+        <div>
+          <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-4">CODING ACTIVITY</p>
+          <h2 class="reveal font-serif text-4xl md:text-6xl leading-tight">GitHub Contributions</h2>
         </div>
-        <div class="rounded-xl border border-ink/10 px-4 py-3">
-          <p class="font-mono text-[10px] tracking-widest text-ink/50">ACTIVE DAYS</p>
-          <p id="ghActive" class="font-serif text-2xl mt-1">–</p>
+    
+        <!-- statistik: sejajar ke kanan -->
+        <div class="reveal flex flex-wrap items-end gap-x-12 gap-y-6">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-paper/50">LAST 365 DAYS</p>
+            <p id="ghTotal" class="font-serif text-5xl md:text-6xl leading-none mt-2">–</p>
+            <p class="text-xs font-light text-paper/50 mt-1">contributions in the last year</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-paper/50">LONGEST STREAK</p>
+            <p id="ghStreak" class="font-serif text-3xl md:text-4xl leading-none mt-2">–</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-paper/50">ACTIVE DAYS</p>
+            <p id="ghActive" class="font-serif text-3xl md:text-4xl leading-none mt-2">–</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <!-- kalender lebar penuh -->
+      <div class="reveal min-w-0 rounded-2xl border border-paper/10 bg-paper/5 p-5 md:p-8">
+        <div id="ghScroll" class="overflow-x-auto pb-2">
+          <div id="ghCalendar" class="w-max">
+            <p class="font-mono text-xs tracking-widest text-paper/50 py-16 px-4">MEMUAT DATA GITHUB…</p>
+          </div>
+        </div>
+    
+        <div class="mt-5 flex items-center justify-between gap-4 font-mono text-[10px] tracking-widest text-paper/50">
+          <a href="https://github.com/the1975" target="_blank" rel="noopener" class="hover:text-paper transition">
+            @the1975 · VIEW PROFILE →
+          </a>
+          <span class="flex items-center gap-1.5">
+            LESS
+            <i class="gh-cell" data-level="0"></i>
+            <i class="gh-cell" data-level="1"></i>
+            <i class="gh-cell" data-level="2"></i>
+            <i class="gh-cell" data-level="3"></i>
+            <i class="gh-cell" data-level="4"></i>
+            MORE
+          </span>
         </div>
       </div>
-
-      <a href="https://github.com/the1975" target="_blank" rel="noopener"
-         class="reveal inline-block mt-6 font-mono text-xs tracking-widest border-b border-ink/40 hover:border-ink transition">
-        VIEW PROFILE →
-      </a>
-    </div>
-
-    <!-- kanan: kalender -->
-    <div class="reveal min-w-0 self-start rounded-2xl border border-ink/10 bg-white/40 p-5">
-      <div id="ghScroll" class="overflow-x-auto pb-2">
-        <div id="ghCalendar" class="w-max">
-          <p class="font-mono text-xs tracking-widest text-ink/50 py-16 px-4">MEMUAT DATA GITHUB…</p>
-        </div>
-      </div>
-
-      <div class="mt-4 flex items-center justify-between gap-4 font-mono text-[10px] tracking-widest text-ink/50">
-        <span>@the1975</span>
-        <span class="flex items-center gap-1.5">
-          LESS
-          <i class="gh-cell" data-level="0"></i>
-          <i class="gh-cell" data-level="1"></i>
-          <i class="gh-cell" data-level="2"></i>
-          <i class="gh-cell" data-level="3"></i>
-          <i class="gh-cell" data-level="4"></i>
-          MORE
-        </span>
-      </div>
-    </div>
-
-  </div>
-</section>
+    
+    </section>
 
 
       <!-- ============ GALLERY ============ -->
