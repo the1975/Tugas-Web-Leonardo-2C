@@ -92,14 +92,7 @@
   );
 }
 
-    .about-section {
-      background-image:
-        linear-gradient(rgba(0, 15, 35, 0.12), rgba(0, 15, 35, 0.4)),
-        url('img/laut2.jpeg');
-    
-      background-size: cover;
-      background-position: center;
-    }
+    .about-section { background: #0e1116; }
 
     /* ========== ANIMASI MUNCUL SAAT SCROLL ========== */
     .reveal {
@@ -586,35 +579,34 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
 
 
       <!-- ============ ABOUT ============ -->
-      <section id="about" class="stack-card about-section min-h-screen flex flex-col justify-center scroll-mt-24 rounded-3xl overflow-hidden px-6 md:px-16 py-24 text-white shadow-2xl">
+      <section id="about" class="stack-card about-section flex flex-col justify-center scroll-mt-24 rounded-3xl overflow-hidden px-6 md:px-16 py-28 md:py-40 text-white shadow-2xl">
 
-        <!-- pola titik halus (kesan grid teknologi) -->
-      <div class="pointer-events-none absolute inset-0"
-           style="background-image: radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px); background-size: 26px 26px;"></div>
+        <div id="aboutGlow" class="pointer-events-none absolute inset-0"
+     style="background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 35%), rgba(70,130,255,.18), transparent 60%);"></div>
 
-        <div class="reveal relative mx-auto w-full max-w-5xl rounded-2xl border border-white/10 bg-[#121212]/60 backdrop-blur-md px-6 md:px-14 py-14 md:py-20 shadow-2xl">
+        <div class="reveal relative mx-auto w-full max-w-6xl">
 
-  <p class="font-mono text-xs tracking-widest text-white/40 text-center mb-10">// ABOUT_ME</p>
+  <p class="font-mono text-xs md:text-sm tracking-widest text-white/40 text-center mb-12">ABOUT ME</p>
 
-  <p id="aboutText" class="font-tech text-3xl sm:text-4xl md:text-5xl font-light tracking-tight leading-[1.2] text-center">
+  <p id="aboutText" class="font-tech text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.15] text-center">
     I'm an Information Systems student who turns <b>data</b> and ideas into <b>useful digital things</b> — building <b>clean web interfaces</b>, exploring <b>database-driven systems</b>, and growing every day in <b>software engineering</b>.
   </p>
 
-  <p class="mt-10 text-center font-mono text-[11px] tracking-widest text-white/40">
+  <p class="mt-14 text-center font-mono text-[11px] md:text-xs tracking-widest text-white/40">
     SISTEM INFORMASI · UNIVERSITAS NUSANTARA PGRI KEDIRI · SEMESTER 3
   </p>
 
   <!-- statistik -->
-  <div class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-[11px] tracking-widest">
+  <div class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 font-mono text-xs md:text-sm tracking-widest">
     <span><span class="text-white/40">PROJECTS</span> 4+</span>
     <span><span class="text-white/40">FOCUS</span> DATA &amp; WEB</span>
     <span><span class="text-white/40">STATUS</span> LEARNING</span>
   </div>
 
   <!-- ticker teknologi -->
-  <div class="mt-12 overflow-hidden"
+  <div class="mt-14 overflow-hidden"
        style="-webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);">
-    <div id="techTicker" class="flex w-max gap-10 pr-10 animate-marquee font-mono text-[11px] tracking-widest text-white/50">
+    <div id="techTicker" class="flex w-max gap-10 pr-10 animate-marquee font-mono text-xs md:text-sm tracking-widest text-white/50">
       <span class="flex items-center gap-10">PYTHON <i class="w-1 h-1 rounded-full bg-white/30"></i></span>
       <span class="flex items-center gap-10">PANDAS <i class="w-1 h-1 rounded-full bg-white/30"></i></span>
       <span class="flex items-center gap-10">NUMPY <i class="w-1 h-1 rounded-full bg-white/30"></i></span>
@@ -1694,6 +1686,20 @@ window.addEventListener('resize', () => {
       ticker.appendChild(c);
     });
   }
+})();
+</script>
+
+  <script>
+(() => {
+  const sec  = document.getElementById('about');
+  const glow = document.getElementById('aboutGlow');
+  if (!sec || !glow || window.matchMedia('(hover: none)').matches) return;
+
+  sec.addEventListener('mousemove', (e) => {
+    const r = sec.getBoundingClientRect();
+    glow.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    glow.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
 })();
 </script>
 
