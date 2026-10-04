@@ -374,193 +374,14 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
   .about-word { opacity: 1 !important; transform: none !important; }
 }
 
-    /* =========================
-   INTRO LOADER
-========================= */
 
-#intro-loader {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-image:
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url("img/leopard1.jpeg");
-
-    background-size: cover;
-    background-position: center;
-
-    overflow: hidden;
-
-    animation: introFade 0.8s ease 3.5s forwards;
-}
-
-.intro-content {
-    position: relative;
-    z-index: 2;
-
-    color: white;
-    text-align: center;
-
-    animation: introContent 1.2s ease forwards;
-}
-
-.intro-location {
-    margin-bottom: 18px;
-
-    font-family: "JetBrains Mono", monospace;
-    font-size: 9px;
-    letter-spacing: 0.3em;
-
-    opacity: 0;
-
-    animation: introText 0.8s ease 0.2s forwards;
-}
-
-.intro-content h1 {
-    margin: 0;
-
-    font-family: "Instrument Serif", serif;
-    font-size: clamp(4rem, 12vw, 9rem);
-    font-weight: 400;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-
-    opacity: 0;
-    transform: translateY(25px);
-
-    animation: introTitle 1s ease 0.4s forwards;
-}
-
-.intro-line {
-    width: 0;
-    height: 1px;
-
-    margin: 22px auto 12px;
-
-    background: white;
-
-    animation: introLine 0.8s ease 1s forwards;
-}
-
-.intro-name {
-    margin: 0;
-
-    font-family: "JetBrains Mono", monospace;
-    font-size: 8px;
-    letter-spacing: 0.25em;
-
-    opacity: 0;
-
-    animation: introText 0.8s ease 1.2s forwards;
-}
-
-
-/* PANEL TRANSITION */
-
-.intro-panel {
-    position: absolute;
-    inset: 0;
-
-    background: var(--color-paper);
-
-    transform: translateY(100%);
-
-    animation: introPanel 1s cubic-bezier(0.77, 0, 0.175, 1) 3s forwards;
-}
-
-
-/* ANIMATIONS */
-
-@keyframes introText {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes introTitle {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes introLine {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100px;
-    }
-}
-
-@keyframes introContent {
-    from {
-        transform: scale(0.96);
-    }
-
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes introPanel {
-    from {
-        transform: translateY(100%);
-    }
-
-    to {
-        transform: translateY(0);
-    }
-}
-
-@keyframes introFade {
-    from {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-    
   </style>
 </head>
 
 
 <body class="font-sans text-ink">
 
-  <!-- INTRO LOADER -->
-<div id="intro-loader">
-    <div class="intro-content">
-        <p class="intro-location">NGANJUK · INDONESIA</p>
-
-        <h1>LEONARDO</h1>
-
-        <div class="intro-line"></div>
-
-        <p class="intro-name">LEONARDO YANUARIANTO</p>
-    </div>
-
-    <div class="intro-panel"></div>
-</div>
-  
+ 
   <!-- ================= NAVBAR ================= -->
   <header class="fixed top-5 md:top-9 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3.5rem)] max-w-4xl">
 
@@ -1883,16 +1704,6 @@ window.addEventListener('resize', () => {
     glow.style.setProperty('--my', (e.clientY - r.top) + 'px');
   });
 })();
-</script>
-
-  <script>
-    window.addEventListener("load", () => {
-        const loader = document.getElementById("intro-loader");
-
-        setTimeout(() => {
-          loader.remove();
-      }, 4400);
-    });
 </script>
 
 </body>
