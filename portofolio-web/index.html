@@ -265,6 +265,111 @@
 .gh-cell[data-level="3"] { background: #26a641; }
 .gh-cell[data-level="4"] { background: #39d353; }
 .gh-cell:hover { outline: 1px solid rgba(232, 232, 228, .6); }
+
+    /* ========== JUDUL KONTAK: HURUF LONCAT ========== */
+.bounce-word { display: inline-block; white-space: nowrap; }
+.bounce-ch {
+  display: inline-block;
+  animation: hop 2.8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 70ms);
+  will-change: transform;
+}
+@keyframes hop {
+  0%, 55%, 100% { transform: translateY(0) rotate(0); }
+  12% { transform: translateY(-.16em) rotate(-4deg); }
+  24% { transform: translateY(0) rotate(3deg); }
+  34% { transform: translateY(-.06em) rotate(0); }
+  44% { transform: translateY(0); }
+}
+/* kursor di atas judul: huruf bergetar */
+.bounce-title:hover .bounce-ch {
+  animation: shake .35s linear infinite;
+  animation-delay: calc(var(--i) * -37ms);
+}
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-.02em, -.04em) rotate(-3deg); }
+  40% { transform: translate(.03em, .02em) rotate(2deg); }
+  60% { transform: translate(-.02em, .03em) rotate(-2deg); }
+  80% { transform: translate(.02em, -.03em) rotate(3deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bounce-ch { animation: none !important; }
+}
+
+/* ========== FORM KONTAK ========== */
+.form-field {
+  width: 100%;
+  border-radius: .75rem;
+  border: 1px solid rgba(232, 232, 228, .2);
+  background: transparent;
+  padding: .75rem 1rem;
+  font-size: .875rem;
+  color: inherit;
+  outline: none;
+  transition: border-color .2s;
+}
+.form-field::placeholder { color: rgba(232, 232, 228, .3); }
+.form-field:focus { border-color: rgba(232, 232, 228, .7); }
+
+    /* ========== IKON KONTAK ========== */
+.contact-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(232, 232, 228, .3);
+  color: #e8e8e4;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color .3s, color .3s, transform .3s;
+}
+.contact-icon:hover { background: #e8e8e4; color: #1c1c1c; transform: translateY(-4px); }
+.contact-icon svg { width: 1.25rem; height: 1.25rem; }
+
+.contact-tip {
+  position: absolute;
+  bottom: calc(100% + .6rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: .25rem .5rem;
+  border-radius: .375rem;
+  background: #e8e8e4;
+  color: #1c1c1c;
+  font: 10px "JetBrains Mono", monospace;
+  letter-spacing: .1em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.contact-icon:hover .contact-tip,
+.contact-icon:focus-visible .contact-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ========== POPUP KONTAK ========== */
+dialog.contact-modal {
+  margin: auto;
+  width: min(92vw, 640px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 0;
+  border: 1px solid rgba(232, 232, 228, .12);
+  border-radius: 1.25rem;
+  background: #1c1c1c;
+  color: #e8e8e4;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+}
+dialog.contact-modal[open] { animation: modal-in .3s ease both; }
+dialog.contact-modal::backdrop { background: rgba(0, 0, 0, .6); backdrop-filter: blur(6px); }
+dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(16px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
     
   </style>
 </head>
@@ -721,60 +826,64 @@
       </section>
 
       <!-- ============ GITHUB CONTRIBUTIONS ============ -->
+      
+      <section id="github" class="scroll-mt-24 px-6 md:px-16 pb-24">
 
-    <section id="github" class="scroll-mt-24 px-6 md:px-16 py-24 bg-ink text-paper">
-    
-      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
-    
+  <div class="border-t border-ink/20 pt-16">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
+
+      <div>
+        <p class="reveal font-mono text-xs tracking-widest text-ink/50 mb-4">CODING ACTIVITY</p>
+        <h2 class="reveal font-serif text-4xl md:text-6xl leading-tight">GitHub Contributions</h2>
+      </div>
+
+      <!-- statistik: sejajar ke kanan -->
+      <div class="reveal flex flex-wrap items-end gap-x-12 gap-y-6">
         <div>
-          <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-4">CODING ACTIVITY</p>
-          <h2 class="reveal font-serif text-4xl md:text-6xl leading-tight">GitHub Contributions</h2>
+          <p class="font-mono text-[10px] tracking-widest text-ink/50">LAST 365 DAYS</p>
+          <p id="ghTotal" class="font-serif text-5xl md:text-6xl leading-none mt-2">–</p>
         </div>
-    
-        <!-- statistik: sejajar ke kanan -->
-        <div class="reveal flex flex-wrap items-end gap-x-12 gap-y-6">
-          <div>
-            <p class="font-mono text-[10px] tracking-widest text-paper/50">LAST 365 DAYS</p>
-            <p id="ghTotal" class="font-serif text-5xl md:text-6xl leading-none mt-2">–</p>
-            <p class="text-xs font-light text-paper/50 mt-1">contributions in the last year</p>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] tracking-widest text-paper/50">LONGEST STREAK</p>
-            <p id="ghStreak" class="font-serif text-3xl md:text-4xl leading-none mt-2">–</p>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] tracking-widest text-paper/50">ACTIVE DAYS</p>
-            <p id="ghActive" class="font-serif text-3xl md:text-4xl leading-none mt-2">–</p>
-          </div>
+        <div>
+          <p class="font-mono text-[10px] tracking-widest text-ink/50">LONGEST STREAK</p>
+          <p id="ghStreak" class="font-serif text-5xl md:text-6xl leading-none mt-2">–</p>
         </div>
-    
-      </div>
-    
-      <!-- kalender lebar penuh -->
-      <div class="reveal min-w-0 rounded-2xl border border-paper/10 bg-paper/5 p-5 md:p-8">
-        <div id="ghScroll" class="overflow-x-auto pb-2">
-          <div id="ghCalendar" class="w-max">
-            <p class="font-mono text-xs tracking-widest text-paper/50 py-16 px-4">MEMUAT DATA GITHUB…</p>
-          </div>
-        </div>
-    
-        <div class="mt-5 flex items-center justify-between gap-4 font-mono text-[10px] tracking-widest text-paper/50">
-          <a href="https://github.com/the1975" target="_blank" rel="noopener" class="hover:text-paper transition">
-            @the1975 · VIEW PROFILE →
-          </a>
-          <span class="flex items-center gap-1.5">
-            LESS
-            <i class="gh-cell" data-level="0"></i>
-            <i class="gh-cell" data-level="1"></i>
-            <i class="gh-cell" data-level="2"></i>
-            <i class="gh-cell" data-level="3"></i>
-            <i class="gh-cell" data-level="4"></i>
-            MORE
-          </span>
+        <div>
+          <p class="font-mono text-[10px] tracking-widest text-ink/50">ACTIVE DAYS</p>
+          <p id="ghActive" class="font-serif text-5xl md:text-6xl leading-none mt-2">–</p>
         </div>
       </div>
-    
-    </section>
+
+    </div>
+
+    <!-- kartu kalender: warna ink -->
+    <div class="reveal min-w-0 rounded-2xl bg-ink text-paper p-5 md:p-8 shadow-xl">
+
+      <div id="ghScroll" class="overflow-x-auto pb-2">
+        <div id="ghCalendar" class="w-max">
+          <p class="font-mono text-xs tracking-widest text-paper/50 py-16 px-4">MEMUAT DATA GITHUB…</p>
+        </div>
+      </div>
+
+      <div class="mt-5 flex items-center justify-between gap-4 font-mono text-[10px] tracking-widest text-paper/50">
+        <a href="https://github.com/the1975" target="_blank" rel="noopener" class="hover:text-paper transition">
+          @the1975 · VIEW PROFILE →
+        </a>
+        <span class="flex items-center gap-1.5">
+          LESS
+          <i class="gh-cell" data-level="0"></i>
+          <i class="gh-cell" data-level="1"></i>
+          <i class="gh-cell" data-level="2"></i>
+          <i class="gh-cell" data-level="3"></i>
+          <i class="gh-cell" data-level="4"></i>
+          MORE
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
       <!-- ============ GALLERY ============ -->
@@ -829,57 +938,109 @@
 
 
       <!-- ============ CONTACT ============ -->
-      <section
-        id="contact"
-        class="scroll-mt-24 px-6 md:px-16 py-28 bg-ink text-paper text-center">
+      <section id="contact" class="scroll-mt-24 px-6 md:px-16 py-28 bg-ink text-paper text-center">
 
-        <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-6">
-          GET IN TOUCH
-        </p>
+  <p class="reveal font-mono text-xs tracking-widest text-paper/50 mb-6">GET IN TOUCH</p>
 
-        <h2 class="reveal font-serif text-5xl sm:text-6xl md:text-9xl leading-none">
-          Let's work <em>together</em>
-        </h2>
+  <h2 id="contactTitle" class="bounce-title reveal font-serif text-5xl sm:text-6xl md:text-9xl leading-none">
+    Let's work <em>together</em>
+  </h2>
+
+  <!-- ikon: 2 pertama membuka popup, 3 berikutnya link sosmed -->
+  <div class="reveal mt-14 flex flex-wrap items-center justify-center gap-3">
+
+    <button type="button" data-open-modal="email" aria-label="Kirim email" class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+      <span class="contact-tip">EMAIL</span>
+    </button>
+
+    <button type="button" data-open-modal="whatsapp" aria-label="Chat WhatsApp" class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+      </svg>
+      <span class="contact-tip">WHATSAPP</span>
+    </button>
+
+    <span class="w-px h-8 bg-paper/20 mx-2" aria-hidden="true"></span>
+
+    <a href="https://github.com/the1975" target="_blank" rel="noopener" aria-label="GitHub" class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+        <path d="M9 18c-4.51 2-5-2-7-2"/>
+      </svg>
+      <span class="contact-tip">GITHUB</span>
+    </a>
+
+    <a href="https://linkedin.com/in/leonardoyanuarianto" target="_blank" rel="noopener" aria-label="LinkedIn" class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+      <span class="contact-tip">LINKEDIN</span>
+    </a>
+
+    <a href="https://instagram.com/leonardoyanuarianto" target="_blank" rel="noopener" aria-label="Instagram" class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      <span class="contact-tip">INSTAGRAM</span>
+    </a>
+
+  </div>
 
 
-        <a
-          href="mailto:leonardoyanuarianto907@gmail.com"
-          class="reveal inline-block mt-10 text-xl md:text-2xl font-light border-b border-paper/40 hover:border-paper transition">
+  <!-- POPUP (dipakai untuk Email dan WhatsApp) -->
+  <dialog id="contactModal" class="contact-modal" aria-labelledby="modalTitle">
+    <div class="relative p-6 md:p-8 text-left">
 
-          leonardoyanuarianto907@gmail.com
+      <button type="button" id="modalClose" aria-label="Tutup"
+              class="absolute top-4 right-4 w-9 h-9 grid place-items-center rounded-full border border-paper/20 hover:bg-paper hover:text-ink transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
 
-        </a>
+      <p id="modalLabel" class="font-mono text-[10px] tracking-widest text-paper/50 mb-3">EMAIL</p>
+      <h3 id="modalTitle" class="font-serif text-3xl md:text-4xl pr-10">Send an Email directly.</h3>
 
+      <form id="contactForm" novalidate class="mt-6 space-y-5">
 
-        <div class="reveal mt-12 flex flex-wrap justify-center gap-4 font-mono text-xs tracking-widest">
+        <label class="block">
+          <span class="font-mono text-[10px] tracking-widest text-paper/50">NAME</span>
+          <input type="text" name="name" required placeholder="John Doe" class="form-field mt-2">
+        </label>
 
-          <a
-            href="https://github.com/the1975"
-            target="_blank"
-            rel="noopener"
-            class="contact-link">
-            GITHUB
-          </a>
+        <label id="emailField" class="block">
+          <span class="font-mono text-[10px] tracking-widest text-paper/50">EMAIL</span>
+          <input type="email" name="email" required placeholder="johndoe@example.com" class="form-field mt-2">
+        </label>
 
-          <a
-            href="https://linkedin.com/in/leonardoyanuarianto"
-            target="_blank"
-            rel="noopener"
-            class="contact-link">
-            LINKEDIN
-          </a>
+        <label class="block">
+          <span class="font-mono text-[10px] tracking-widest text-paper/50">MESSAGE</span>
+          <textarea name="message" rows="5" required placeholder="Your message here..." class="form-field mt-2" style="resize: vertical;"></textarea>
+        </label>
 
-          <a
-            href="https://instagram.com/leonardoyanuarianto"
-            target="_blank"
-            rel="noopener"
-            class="contact-link">
-            INSTAGRAM
-          </a>
+        <!-- jebakan spam, jangan dihapus -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display: none;">
 
-        </div>
+        <button id="sendBtn" type="submit"
+                class="w-full rounded-xl bg-paper text-ink py-3 font-mono text-xs tracking-widest hover:opacity-90 transition disabled:opacity-50">
+          SEND MESSAGE
+        </button>
 
-      </section>
+        <p id="formStatus" role="status" class="font-mono text-xs tracking-widest text-paper/60 min-h-[1rem]"></p>
+
+      </form>
+    </div>
+  </dialog>
+
+</section>
 
 
       <!-- ============ FOOTER ============ -->
@@ -1322,6 +1483,142 @@ window.addEventListener('resize', () => {
 });
 })();
     
+</script>
+
+<script>
+(() => {
+  /* ====== PENGATURAN ====== */
+  const FORM_ENDPOINT = '';                  // isi URL Formspree, contoh: 'https://formspree.io/f/abcdwxyz' (kosong = buka aplikasi email)
+  const TO_EMAIL  = 'leonardoyanuarianto907@gmail.com';
+  const WA_NUMBER = '6285733283841';         // format internasional: 62 + nomor tanpa angka 0 di depan
+
+  /* ====== 1. HURUF "LET'S WORK TOGETHER" LONCAT-LONCAT ====== */
+  function splitLetters(root) {
+    let i = 0;
+    root.setAttribute('aria-label', root.textContent.replace(/\s+/g, ' ').trim());
+
+    const walk = (node) => {
+      [...node.childNodes].forEach((child) => {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+
+            const word = document.createElement('span');
+            word.className = 'bounce-word';
+            word.setAttribute('aria-hidden', 'true');
+            [...part].forEach((ch) => {
+              const s = document.createElement('span');
+              s.className = 'bounce-ch';
+              s.style.setProperty('--i', i++);
+              s.textContent = ch;
+              word.appendChild(s);
+            });
+            frag.appendChild(word);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      });
+    };
+    walk(root);
+  }
+
+  const title = document.getElementById('contactTitle');
+  if (title) splitLetters(title);
+
+  /* ====== 2. POPUP (dipakai untuk Email dan WhatsApp) ====== */
+  const modal      = document.getElementById('contactModal');
+  const form       = document.getElementById('contactForm');
+  const emailField = document.getElementById('emailField');
+  const modalLabel = document.getElementById('modalLabel');
+  const modalTitle = document.getElementById('modalTitle');
+  const status     = document.getElementById('formStatus');
+  const btn        = document.getElementById('sendBtn');
+  if (!modal || !form) return;
+
+  let mode = 'email';
+
+  const COPY = {
+    email:    { label: 'EMAIL',    title: 'Send an Email directly.', button: 'SEND MESSAGE',  placeholder: 'Your message here...' },
+    whatsapp: { label: 'WHATSAPP', title: 'Chat me on WhatsApp.',    button: 'OPEN WHATSAPP', placeholder: 'Tulis pesan kamu di sini...' }
+  };
+
+  function openModal(m) {
+    mode = m;
+    const c = COPY[m];
+
+    modalLabel.textContent = c.label;
+    modalTitle.textContent = c.title;
+    btn.textContent = c.button;
+    form.elements['message'].placeholder = c.placeholder;
+    emailField.style.display = m === 'whatsapp' ? 'none' : '';
+    form.elements['email'].required = m === 'email';
+    status.textContent = '';
+
+    document.body.style.overflow = 'hidden';
+    modal.showModal();
+    form.elements['name'].focus();
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach((b) => {
+    b.addEventListener('click', () => openModal(b.dataset.openModal));
+  });
+
+  document.getElementById('modalClose').addEventListener('click', () => modal.close());
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+  modal.addEventListener('close', () => { document.body.style.overflow = ''; });
+
+  /* ====== 3. KIRIM PESAN ====== */
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const data = Object.fromEntries(new FormData(form));
+    if (data._gotcha) return;
+
+    /* --- WhatsApp: buka chat dengan pesan sudah terisi, tinggal tekan kirim --- */
+    if (mode === 'whatsapp') {
+      const text = 'Halo Leonardo, saya ' + data.name + '.\n\n' + data.message;
+      status.textContent = 'MEMBUKA WHATSAPP…';
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      return;
+    }
+
+    /* --- Email tanpa layanan form: buka aplikasi email dengan isi sudah terisi --- */
+    if (!FORM_ENDPOINT) {
+      const subject = encodeURIComponent('Pesan dari portfolio: ' + data.name);
+      const body = encodeURIComponent(data.message + '\n\n— ' + data.name + ' (' + data.email + ')');
+      status.textContent = 'MEMBUKA APLIKASI EMAIL…';
+      window.location.href = 'mailto:' + TO_EMAIL + '?subject=' + subject + '&body=' + body;
+      return;
+    }
+
+    /* --- Email lewat Formspree: langsung masuk inbox --- */
+    btn.disabled = true;
+    btn.textContent = 'SENDING…';
+    status.textContent = '';
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      status.textContent = 'TERKIRIM. TERIMA KASIH, SAYA AKAN SEGERA MEMBALAS!';
+      setTimeout(() => modal.close(), 2200);
+    } catch (err) {
+      status.textContent = 'GAGAL MENGIRIM. COBA LAGI ATAU HUBUNGI LEWAT WHATSAPP.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = COPY.email.button;
+    }
+  });
+})();
 </script>
 
 </body>
