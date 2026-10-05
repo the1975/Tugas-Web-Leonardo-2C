@@ -611,12 +611,13 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
    ================================================== */
 
 .hero-chip-glitch {
-  width: 180px;
-  height: 48px;
-  min-width: 180px;
-  max-width: 180px;
-  box-sizing: border-box;
-
+  width: max-content;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+  white-space: nowrap;
   display: flex;
   align-items: center;
 
@@ -2300,15 +2301,17 @@ setTimeout(triggerGlitch, 4000);
   }
 
   function moveChip(chip, position) {
-    chip.style.left = '';
-    chip.style.right = '';
-    chip.style.top = '';
-    chip.style.bottom = '';
+  // Matikan posisi lama dari class Tailwind
+  chip.style.left = 'auto';
+  chip.style.right = 'auto';
+  chip.style.top = 'auto';
+  chip.style.bottom = 'auto';
 
-    Object.entries(position).forEach(([key, value]) => {
-      chip.style[key] = value;
-    });
-  }
+  // Terapkan posisi baru
+  Object.entries(position).forEach(([key, value]) => {
+    chip.style[key] = value;
+  });
+}
 
   function triggerMindset(chip, textElement, iconElement, currentIndex, positionList) {
     currentIndex = (currentIndex + 1) % mindsets.length;
