@@ -847,6 +847,35 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
   }
 }
 
+    /* ===== HERO BACKGROUND GIANT TEXT ===== */
+.hero-bg-text {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(120px, 18vw, 320px);
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  line-height: 1;
+
+  color: rgba(28, 28, 28, 0.055);
+  white-space: nowrap;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-bg-text {
+    top: 30%;
+    font-size: 26vw;
+  }
+}
+
   </style>
 </head>
 
@@ -898,16 +927,21 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
 
       <!-- ===== HERO SECTION ===== -->
       <section
-        class="hero relative md:min-h-screen bg-paper rounded-3xl overflow-hidden px-6 md:px-16 pt-36 pb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center shadow-2xl"
-            style="background:
-      radial-gradient(
-        circle 420px at 72% 50%,
-        #bfc1c1 0%,
-        #e8e8e4 38%,
-        #f2f2f0 72%,
-        #fafafa 100%
-      );"
-          >
+      class="hero relative md:min-h-screen bg-paper rounded-3xl overflow-hidden px-6 md:px-16 pt-36 pb-16 md:pt-28 md:pb-28 grid md:grid-cols-2 gap-8 md:gap-12 items-center shadow-2xl"
+      style="background:
+        radial-gradient(
+          circle 420px at 72% 50%,
+          #bfc1c1 0%,
+          #e8e8e4 38%,
+          #f2f2f0 72%,
+          #fafafa 100%
+        );"
+    >
+
+        <!-- BACKGROUND GIANT TEXT -->
+        <div class="hero-bg-text" aria-hidden="true">
+          ARCHITECT
+        </div>
 
         <!-- Hero decorative background -->
         <div class="hero-decoration" aria-hidden="true">
