@@ -387,6 +387,77 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
   transform: translateY(-50%);
 }
 
+    .hero-label {
+  position: absolute;
+  z-index: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(28, 28, 28, 0.45);
+  white-space: nowrap;
+}
+
+.hero-label-1 {
+  top: 20%;
+  left: 7%;
+}
+
+.hero-label-2 {
+  bottom: 12%;
+  left: 7%;
+}
+
+    @media (max-width: 768px) {
+  .hero-label-1 {
+    top: 13%;
+    left: 7%;
+  }
+
+  .hero-label-2 {
+    bottom: 4%;
+    left: 7%;
+  }
+}
+
+    @media (max-width: 768px) {
+  .hero-decoration {
+    display: none;
+  }
+}
+
+    .hero-label {
+  animation: labelGlitch 8s infinite;
+}
+
+@keyframes labelGlitch {
+  0%, 92%, 100% {
+    transform: translate(0);
+    opacity: 0.45;
+  }
+
+  93% {
+    transform: translate(-2px, 0);
+    opacity: 0.7;
+  }
+
+  94% {
+    transform: translate(2px, 0);
+    opacity: 0.3;
+  }
+
+  95% {
+    transform: translate(0);
+    opacity: 0.45;
+  }
+}
+
+    @media (max-width: 768px) {
+  .hero-label {
+    animation: none;
+  }
+}
+
 
   </style>
 </head>
@@ -441,7 +512,10 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
       <section class="hero relative md:min-h-screen bg-paper rounded-3xl overflow-hidden px-6 md:px-16 pt-36 pb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center shadow-2xl">
 
         <!-- Hero decorative background -->
-        <div class="hero-decoration" aria-hidden="true"></div>
+        <div class="hero-decoration" aria-hidden="true">
+          <span class="hero-label hero-label-1">WEB × DATA</span>
+          <span class="hero-label hero-label-2">SYSTEM / 01</span>
+        </div>
 
         <div class="pointer-events-none absolute inset-0"
      style="background-image: linear-gradient(rgba(28,28,28,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(28,28,28,.045) 1px, transparent 1px);
