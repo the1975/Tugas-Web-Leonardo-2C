@@ -606,6 +606,165 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
   }
 }
 
+    /* ==================================================
+   MINDSET CHIP SYSTEM
+   ================================================== */
+
+.hero-chip-glitch {
+  transition:
+    left .5s cubic-bezier(.22, 1, .36, 1),
+    right .5s cubic-bezier(.22, 1, .36, 1),
+    top .5s cubic-bezier(.22, 1, .36, 1),
+    bottom .5s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* background hero ikut bereaksi */
+.hero.mindset-glitch {
+  animation: heroSystemGlitch .45s steps(2) both;
+}
+
+.hero.mindset-glitch .hero-decoration {
+  animation: decorationGlitch .45s steps(2) both;
+}
+
+.hero.mindset-glitch .hero-label {
+  animation: mindsetLabelGlitch .45s steps(2) both;
+}
+
+
+/* glitch seluruh hero */
+@keyframes heroSystemGlitch {
+  0% {
+    transform: translate(0);
+    filter: none;
+  }
+
+  20% {
+    transform: translate(-2px, 0);
+    filter: contrast(1.12);
+  }
+
+  40% {
+    transform: translate(2px, 0);
+    filter: contrast(1.2);
+  }
+
+  60% {
+    transform: translate(-1px, 0);
+  }
+
+  100% {
+    transform: translate(0);
+    filter: none;
+  }
+}
+
+
+/* circle + grid */
+@keyframes decorationGlitch {
+  0% {
+    transform: translate(0);
+    opacity: 1;
+  }
+
+  25% {
+    transform: translate(3px, -1px);
+    opacity: .65;
+  }
+
+  50% {
+    transform: translate(-3px, 1px);
+    opacity: .9;
+  }
+
+  75% {
+    transform: translate(1px, 0);
+    opacity: .7;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+
+/* label ikut pecah sedikit */
+@keyframes mindsetLabelGlitch {
+  0% {
+    transform: translate(0);
+    opacity: .45;
+  }
+
+  25% {
+    transform: translate(-3px, 0);
+    opacity: .8;
+  }
+
+  50% {
+    transform: translate(3px, 0);
+    opacity: .25;
+  }
+
+  75% {
+    transform: translate(-1px, 0);
+    opacity: .65;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: .45;
+  }
+}
+
+
+/* chip yang sedang berubah */
+.hero-chip-glitch.mindset-change {
+  animation: mindsetChipChange .4s steps(2) both;
+}
+
+@keyframes mindsetChipChange {
+  0% {
+    transform: translate(0);
+    filter: none;
+  }
+
+  25% {
+    transform: translate(-3px, 0);
+    filter: contrast(1.4);
+  }
+
+  50% {
+    transform: translate(3px, 0);
+    filter: contrast(1.7);
+  }
+
+  75% {
+    transform: translate(-1px, 0);
+  }
+
+  100% {
+    transform: translate(0);
+    filter: none;
+  }
+}
+
+
+/* mobile tetap bersih */
+@media (max-width: 768px) {
+  .hero.mindset-glitch {
+    animation: none;
+  }
+
+  .hero.mindset-glitch .hero-decoration {
+    animation: none;
+  }
+
+  .hero.mindset-glitch .hero-label {
+    animation: none;
+  }
+}
+
   </style>
 </head>
 
@@ -797,27 +956,50 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
         
           </div>
         
-          <!-- chip kiri atas -->
-          <div class="hero-chip-glitch float-slow hidden md:flex absolute -left-12 top-16 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
+          <!-- MINDSET CHIP 01 -->
+          <div
+            id="mindsetChip1"
+            class="hero-chip-glitch float-slow hidden md:flex absolute -left-12 top-16 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)] cursor-pointer select-none"
+            role="button"
+            tabindex="0"
+            aria-label="Ganti mindset"
+          >
             <span class="w-8 h-8 rounded-lg bg-ink text-paper grid place-items-center">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="16 18 22 12 16 6"/>
                 <polyline points="8 6 2 12 8 18"/>
               </svg>
             </span>
-            <span class="font-mono text-[10px] tracking-widest">PROBLEM SOLVING</span>
+          
+            <span id="mindsetText1" class="font-mono text-[10px] tracking-widest">
+              PROBLEM SOLVING
+            </span>
           </div>
           
-          <!-- chip kanan bawah -->
-          <div class="hero-chip-glitch float-slower hidden md:flex absolute -right-8 bottom-28 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
+          
+          <!-- MINDSET CHIP 02 -->
+          <div
+            id="mindsetChip2"
+            class="hero-chip-glitch float-slower hidden md:flex absolute -right-8 bottom-28 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)] cursor-pointer select-none"
+            role="button"
+            tabindex="0"
+            aria-label="Ganti mindset"
+          >
             <span class="w-8 h-8 rounded-lg bg-ink text-paper grid place-items-center">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="20" x2="12" y2="10"/>
                 <line x1="18" y1="20" x2="18" y2="4"/>
                 <line x1="6" y1="20" x2="6" y2="16"/>
               </svg>
             </span>
-            <span class="font-mono text-[10px] tracking-widest">SYSTEM THINKING</span>
+          
+            <span id="mindsetText2" class="font-mono text-[10px] tracking-widest">
+              SYSTEM THINKING
+            </span>
           </div>
         
         </div>
@@ -1975,6 +2157,217 @@ function triggerGlitch() {
 }
 
 setTimeout(triggerGlitch, 4000);
+</script>
+
+  <script>
+(() => {
+
+  const hero = document.querySelector('.hero');
+
+  const chip1 = document.getElementById('mindsetChip1');
+  const chip2 = document.getElementById('mindsetChip2');
+
+  const text1 = document.getElementById('mindsetText1');
+  const text2 = document.getElementById('mindsetText2');
+
+  if (!hero || !chip1 || !chip2 || !text1 || !text2) return;
+
+
+  /* ==========================================
+     MINDSET YANG AKAN DITAMPILKAN
+     ========================================== */
+
+  const mindsets = [
+    'PROBLEM SOLVING',
+    'SYSTEM THINKING',
+    'ANALYTICAL THINKING',
+    'CRITICAL THINKING',
+    'LOGICAL THINKING',
+    'ADAPTABILITY',
+    'CREATIVE THINKING',
+    'CONTINUOUS LEARNING'
+  ];
+
+
+  /* ==========================================
+     POSISI CHIP
+     ========================================== */
+
+  const positions = [
+    {
+      left: '-48px',
+      top: '64px'
+    },
+
+    {
+      right: '-32px',
+      top: '80px'
+    },
+
+    {
+      left: '-28px',
+      top: '45%'
+    },
+
+    {
+      right: '-42px',
+      top: '42%'
+    },
+
+    {
+      left: '-45px',
+      bottom: '80px'
+    },
+
+    {
+      right: '-25px',
+      bottom: '70px'
+    }
+  ];
+
+
+  let index1 = 0;
+  let index2 = 1;
+
+
+  /* ==========================================
+     PINDAHKAN POSISI CHIP
+     ========================================== */
+
+  function moveChip(chip, position) {
+
+    chip.style.left = '';
+    chip.style.right = '';
+    chip.style.top = '';
+    chip.style.bottom = '';
+
+    Object.entries(position).forEach(([key, value]) => {
+      chip.style[key] = value;
+    });
+
+  }
+
+
+  /* ==========================================
+     GLITCH SAAT DIKLIK
+     ========================================== */
+
+  function triggerMindset(chip, textElement, currentIndex, offset) {
+
+    currentIndex =
+      (currentIndex + 1) % mindsets.length;
+
+    const position =
+      positions[(currentIndex + offset) % positions.length];
+
+
+    /* glitch */
+    chip.classList.remove('mindset-change');
+
+    void chip.offsetWidth;
+
+    chip.classList.add('mindset-change');
+
+    hero.classList.remove('mindset-glitch');
+
+    void hero.offsetWidth;
+
+    hero.classList.add('mindset-glitch');
+
+
+    /* ubah teks */
+    setTimeout(() => {
+      textElement.textContent = mindsets[currentIndex];
+
+      moveChip(chip, position);
+    }, 120);
+
+
+    /* bersihkan efek */
+    setTimeout(() => {
+      chip.classList.remove('mindset-change');
+      hero.classList.remove('mindset-glitch');
+    }, 500);
+
+
+    return currentIndex;
+  }
+
+
+  /* ==========================================
+     KLIK CHIP 1
+     ========================================== */
+
+  chip1.addEventListener('click', () => {
+
+    index1 = triggerMindset(
+      chip1,
+      text1,
+      index1,
+      0
+    );
+
+  });
+
+
+  /* ==========================================
+     KLIK CHIP 2
+     ========================================== */
+
+  chip2.addEventListener('click', () => {
+
+    index2 = triggerMindset(
+      chip2,
+      text2,
+      index2,
+      2
+    );
+
+  });
+
+
+  /* ==========================================
+     KEYBOARD
+     ========================================== */
+
+  function keyboardControl(chip, handler) {
+
+    chip.addEventListener('keydown', (e) => {
+
+      if (e.key === 'Enter' || e.key === ' ') {
+
+        e.preventDefault();
+
+        handler();
+
+      }
+
+    });
+
+  }
+
+
+  keyboardControl(chip1, () => {
+    index1 = triggerMindset(
+      chip1,
+      text1,
+      index1,
+      0
+    );
+  });
+
+
+  keyboardControl(chip2, () => {
+    index2 = triggerMindset(
+      chip2,
+      text2,
+      index2,
+      2
+    );
+  });
+
+
+})();
 </script>
 
 </body>
