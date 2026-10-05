@@ -344,6 +344,17 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
   .about-word { opacity: 1 !important; transform: none !important; }
 }
 
+    /* ========== CHIP MELAYANG ========== */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-slow   { animation: float-y 5s ease-in-out infinite; }
+.float-slower { animation: float-y 6.5s ease-in-out infinite; animation-delay: -2s; }
+@media (prefers-reduced-motion: reduce) {
+  .float-slow, .float-slower { animation: none; }
+}
+
 
   </style>
 </head>
@@ -395,7 +406,13 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
 
 
       <!-- ============ HERO ============ -->
-      <section class="hero relative min-h-screen bg-paper rounded-3xl overflow-hidden px-6 md:px-16 pt-36 pb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center shadow-2xl">
+      <section class="hero relative md:min-h-screen bg-paper rounded-3xl overflow-hidden px-6 md:px-16 pt-36 pb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center shadow-2xl">
+
+        <div class="pointer-events-none absolute inset-0"
+     style="background-image: linear-gradient(rgba(28,28,28,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(28,28,28,.045) 1px, transparent 1px);
+            background-size: 56px 56px;
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 45%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 60% at 70% 45%, #000 20%, transparent 75%);"></div>
 
         <div class="relative z-10">
 
@@ -507,32 +524,39 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
         </div>
 
 
-        <!-- FOTO -->
-        <div class="reveal relative bg-ink rounded-3xl aspect-[3/4] max-w-sm w-full justify-self-center md:justify-self-end overflow-hidden shadow-2xl">
-
-          <img
-            src="img/karina.jpeg"
-            alt="Foto Leonardo"
-            class="w-full h-full object-cover grayscale">
-
-          <div class="absolute bottom-4 inset-x-4 bg-black/60 backdrop-blur rounded-xl px-4 py-3 text-paper flex items-center justify-between">
-
-            <div>
-
-              <p class="text-xs font-semibold">
-                @leonardoyanuarianto
-              </p>
-
-              <p class="text-[11px] opacity-60">
-                Available for work!
-              </p>
-
+        <!-- FOTO + chip melayang -->
+        <div class="relative order-first md:order-none w-full max-w-[200px] sm:max-w-[260px] md:max-w-sm justify-self-center md:justify-self-end">
+        
+          <div class="reveal relative bg-ink rounded-3xl aspect-[4/5] md:aspect-[3/4] overflow-hidden shadow-2xl">
+        
+            <img src="img/karina.jpeg" alt="Foto Leonardo" class="w-full h-full object-cover object-top grayscale">
+        
+            <div class="absolute bottom-4 inset-x-4 hidden sm:flex bg-black/60 backdrop-blur rounded-xl px-4 py-3 text-paper items-center justify-between">
+              <div>
+                <p class="text-xs font-semibold">@leonardoyanuarianto</p>
+                <p class="text-[11px] opacity-60">Available for work!</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
             </div>
-
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-
+        
+          </div>
+        
+          <!-- chip kiri atas -->
+          <div class="float-slow hidden md:flex absolute -left-12 top-16 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
+            <span class="w-8 h-8 rounded-lg bg-ink text-paper grid place-items-center">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </span>
+            <span class="font-mono text-[10px] tracking-widest">PROBLEM SOLVING</span>
           </div>
 
+          <!-- chip kanan bawah -->
+          <div class="float-slower hidden md:flex absolute -right-8 bottom-28 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
+            <span class="w-8 h-8 rounded-lg bg-ink text-paper grid place-items-center">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            </span>
+            <span class="font-mono text-[10px] tracking-widest">ADAPTATION</span>
+          </div>
+        
         </div>
 
       </section>
