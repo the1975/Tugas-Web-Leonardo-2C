@@ -458,6 +458,153 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
   }
 }
 
+    .hero-glitch {
+  position: relative;
+}
+
+.hero-glitch::before,
+.hero-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hero-glitch::before {
+  color: #8b0000;
+  transform: translateX(-2px);
+}
+
+.hero-glitch::after {
+  color: #004c99;
+  transform: translateX(2px);
+}
+
+.hero-glitch.glitch-active::before {
+  animation: glitchRed 0.18s steps(2) both;
+}
+
+.hero-glitch.glitch-active::after {
+  animation: glitchBlue 0.18s steps(2) both;
+}
+
+@keyframes glitchRed {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 70% 0);
+  }
+
+  40% {
+    opacity: 0.7;
+    clip-path: inset(15% 0 45% 0);
+  }
+
+  100% {
+    opacity: 0;
+    clip-path: inset(70% 0 5% 0);
+  }
+}
+
+@keyframes glitchBlue {
+  0% {
+    opacity: 0;
+    clip-path: inset(60% 0 10% 0);
+  }
+
+  40% {
+    opacity: 0.6;
+    clip-path: inset(35% 0 35% 0);
+  }
+
+  100% {
+    opacity: 0;
+    clip-path: inset(5% 0 75% 0);
+  }
+}
+
+    /* ===== GLITCH SYNC ===== */
+
+.hero-label,
+.hero-chip-glitch {
+  animation: syncGlitch 8s infinite;
+}
+
+/* glitch layer chip */
+.hero-chip-glitch::before,
+.hero-chip-glitch::after {
+  animation: syncGlitchLayer 8s infinite;
+}
+
+@keyframes syncGlitch {
+
+  0%,
+  91%,
+  100% {
+    transform: translate(0, 0);
+    filter: none;
+  }
+
+  /* glitch mulai bareng */
+  92% {
+    transform: translate(-2px, 0);
+    filter: contrast(1.15);
+  }
+
+  93% {
+    transform: translate(2px, 0);
+    filter: contrast(1.3);
+  }
+
+  94% {
+    transform: translate(-1px, 0);
+    filter: contrast(1.15);
+  }
+
+  95% {
+    transform: translate(0, 0);
+    filter: none;
+  }
+}
+
+@keyframes syncGlitchLayer {
+
+  0%,
+  91%,
+  100% {
+    opacity: 0;
+  }
+
+  92% {
+    opacity: .7;
+  }
+
+  93% {
+    opacity: .9;
+  }
+
+  94% {
+    opacity: .5;
+  }
+
+  95% {
+    opacity: 0;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+
+  .hero-label,
+  .hero-chip-glitch {
+    animation: none;
+  }
+
+  .hero-chip-glitch::before,
+  .hero-chip-glitch::after {
+    animation: none;
+  }
+}
 
   </style>
 </head>
@@ -530,7 +677,7 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
           </p>
 
 
-          <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
+          <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95] hero-glitch" data-text="Hi, I'm Leonardo.">
             <span class="block animate-reveal font-normal">Hi, I'm</span>
             <em class="block animate-reveal" style="animation-delay: .4s">Leonardo.</em>
           </h1>
@@ -651,17 +798,24 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
           </div>
         
           <!-- chip kiri atas -->
-          <div class="float-slow hidden md:flex absolute -left-12 top-16 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
+          <div class="hero-chip-glitch float-slow hidden md:flex absolute -left-12 top-16 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
             <span class="w-8 h-8 rounded-lg bg-ink text-paper grid place-items-center">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
             </span>
             <span class="font-mono text-[10px] tracking-widest">PROBLEM SOLVING</span>
           </div>
-
+          
           <!-- chip kanan bawah -->
-          <div class="float-slower hidden md:flex absolute -right-8 bottom-28 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
+          <div class="hero-chip-glitch float-slower hidden md:flex absolute -right-8 bottom-28 items-center gap-3 rounded-xl bg-white/90 backdrop-blur border border-ink/10 px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,.08)]">
             <span class="w-8 h-8 rounded-lg bg-ink text-paper grid place-items-center">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="20" x2="12" y2="10"/>
+                <line x1="18" y1="20" x2="18" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="16"/>
+              </svg>
             </span>
             <span class="font-mono text-[10px] tracking-widest">SYSTEM THINKING</span>
           </div>
@@ -1803,6 +1957,24 @@ window.addEventListener('resize', () => {
     glow.style.setProperty('--my', (e.clientY - r.top) + 'px');
   });
 })();
+</script>
+
+  <script>
+const glitchTargets = document.querySelectorAll('.hero-glitch');
+
+function triggerGlitch() {
+  glitchTargets.forEach(el => {
+    el.classList.add('glitch-active');
+
+    setTimeout(() => {
+      el.classList.remove('glitch-active');
+    }, 180);
+  });
+
+  setTimeout(triggerGlitch, 5000 + Math.random() * 5000);
+}
+
+setTimeout(triggerGlitch, 4000);
 </script>
 
 </body>
