@@ -847,6 +847,63 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
   }
 }
 
+    /* ========== TUMPUKAN SCREENSHOT PROJECT ========== */
+.shot-stage {
+  position: relative;
+  margin-top: 2rem;                              /* ruang buat kartu belakang yang mengintip */
+  padding-bottom: calc(62.5% + 36px);            /* rasio 16:10 + tinggi bar jendela */
+  touch-action: pan-y;
+  cursor: pointer;
+  outline: none;
+}
+.shot-stage:focus-visible { outline: 2px solid rgba(28, 28, 28, .4); outline-offset: 8px; border-radius: 1rem; }
+
+.shot-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(28, 28, 28, .12);
+  background: #0e1116;
+  box-shadow: 0 25px 50px -20px rgba(0, 0, 0, .35);
+  transform-origin: top center;
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), opacity .4s ease;
+  will-change: transform, opacity;
+}
+.shot-bar { display: flex; align-items: center; gap: .375rem; height: 36px; padding: 0 1rem; background: #1c1c1c; }
+.shot-bar i { width: .625rem; height: .625rem; border-radius: 9999px; background: rgba(232, 232, 228, .2); }
+.shot-bar span { margin-left: .75rem; font: 10px "JetBrains Mono", monospace; letter-spacing: .1em; color: rgba(232, 232, 228, .4); }
+.shot-card img { display: block; width: 100%; height: calc(100% - 36px); object-fit: cover; object-position: top; }
+
+/* kalau gambar belum ada */
+.shot-card.no-img::after {
+  content: 'PREVIEW PROJECT';
+  position: absolute;
+  inset: 36px 0 0 0;
+  display: grid;
+  place-items: center;
+  font: 10px "JetBrains Mono", monospace;
+  letter-spacing: .1em;
+  color: rgba(232, 232, 228, .3);
+}
+
+.shot-ui { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; }
+.shot-btns { display: flex; gap: .5rem; }
+.shot-btn {
+  width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+  border: 1px solid rgba(28, 28, 28, .25);
+  background: transparent; color: inherit; cursor: pointer;
+  display: grid; place-items: center;
+  transition: background-color .3s, color .3s;
+}
+.shot-btn:hover { background: #1c1c1c; color: #e8e8e4; }
+.shot-btn svg { width: 1rem; height: 1rem; }
+.shot-count { font: 11px "JetBrains Mono", monospace; letter-spacing: .1em; color: rgba(28, 28, 28, .5); }
+
+@media (prefers-reduced-motion: reduce) {
+  .shot-card { transition: none; }
+}
+
   </style>
 </head>
 
@@ -1276,20 +1333,9 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
             </div>
       
             <div class="reveal order-first md:order-last">
-              <div class="rounded-2xl overflow-hidden border border-ink/10 bg-night shadow-[0_25px_50px_-20px_rgba(0,0,0,.35)]">
-                <div class="flex items-center gap-1.5 px-4 py-3 bg-ink">
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="ml-3 font-mono text-[10px] tracking-widest text-paper/40">freelance-skill-analytics</span>
-                </div>
-                <div class="relative aspect-[16/10] overflow-hidden">
-                  <span class="absolute inset-0 grid place-items-center font-mono text-[10px] tracking-widest text-paper/30">PREVIEW PROJECT</span>
-                  <img src="img/project-1.gif" alt="Dokumentasi Freelance Skill Analytics" loading="lazy"
-                       onerror="this.style.opacity=0"
-                       class="relative w-full h-full object-cover object-top transition duration-700 group-hover:scale-[1.03]">
-                </div>
-              </div>
+              <div class="shot-stack"
+                   data-label="freelance-skill-analytics"
+                   data-shots="img/project-1-a.webp, img/project-1-b.webp, img/project-1-c.webp"></div>
             </div>
       
           </article>
@@ -1319,20 +1365,9 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
             </div>
       
             <div class="reveal order-first">
-              <div class="rounded-2xl overflow-hidden border border-ink/10 bg-night shadow-[0_25px_50px_-20px_rgba(0,0,0,.35)]">
-                <div class="flex items-center gap-1.5 px-4 py-3 bg-ink">
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="ml-3 font-mono text-[10px] tracking-widest text-paper/40">personal-portfolio</span>
-                </div>
-                <div class="relative aspect-[16/10] overflow-hidden">
-                  <span class="absolute inset-0 grid place-items-center font-mono text-[10px] tracking-widest text-paper/30">PREVIEW PROJECT</span>
-                  <img src="img/project-2.gif" alt="Dokumentasi Personal Portfolio" loading="lazy"
-                       onerror="this.style.opacity=0"
-                       class="relative w-full h-full object-cover object-top transition duration-700 group-hover:scale-[1.03]">
-                </div>
-              </div>
+              <div class="shot-stack"
+                   data-label="personal-portfolio"
+                   data-shots="img/project-2-a.webp, img/project-2-b.webp, img/project-2-c.webp"></div>
             </div>
       
           </article>
@@ -1362,20 +1397,9 @@ dialog.contact-modal[open]::backdrop { animation: modal-fade .3s ease both; }
             </div>
       
             <div class="reveal order-first md:order-last">
-              <div class="rounded-2xl overflow-hidden border border-ink/10 bg-night shadow-[0_25px_50px_-20px_rgba(0,0,0,.35)]">
-                <div class="flex items-center gap-1.5 px-4 py-3 bg-ink">
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-paper/20"></span>
-                  <span class="ml-3 font-mono text-[10px] tracking-widest text-paper/40">iphone-price-scraper</span>
-                </div>
-                <div class="relative aspect-[16/10] overflow-hidden">
-                  <span class="absolute inset-0 grid place-items-center font-mono text-[10px] tracking-widest text-paper/30">PREVIEW PROJECT</span>
-                  <img src="img/project-3.gif" alt="Dokumentasi iPhone Price Scraper" loading="lazy"
-                       onerror="this.style.opacity=0"
-                       class="relative w-full h-full object-cover object-top transition duration-700 group-hover:scale-[1.03]">
-                </div>
-              </div>
+              <div class="shot-stack"
+                   data-label="iphone-price-scraper"
+                   data-shots="img/project-3-a.webp, img/project-3-b.webp, img/project-3-c.webp"></div>
             </div>
       
           </article>
@@ -2482,6 +2506,146 @@ setTimeout(triggerGlitch, 4000);
       index2,
       rightPositions
     );
+  });
+})();
+</script>
+
+  <script>
+(() => {
+  const opacityFor = (pos) => (pos === 0 ? 1 : pos === 1 ? 0.85 : pos === 2 ? 0.6 : 0);
+
+  /* posisi kartu di tumpukan: 0 = paling atas, makin besar = makin ke belakang */
+  const place = (card, pos) => {
+    const k = Math.min(pos, 2);
+    card.style.zIndex = String(10 - pos);
+    card.style.transform = 'translateY(' + (-14 * k) + 'px) scale(' + (1 - 0.05 * k) + ')';
+    card.style.opacity = opacityFor(pos);
+  };
+
+  document.querySelectorAll('.shot-stack').forEach((root) => {
+    const shots = (root.dataset.shots || '').split(',').map((s) => s.trim()).filter(Boolean);
+    const label = root.dataset.label || 'project';
+    if (!shots.length) return;
+
+    const n = shots.length;
+    const stage = document.createElement('div');
+    stage.className = 'shot-stage';
+    stage.tabIndex = 0;
+    stage.setAttribute('role', 'group');
+    stage.setAttribute('aria-label', 'Screenshot ' + label);
+
+    /* ---- buat kartu (jendela browser mini) dari daftar gambar ---- */
+    const cards = shots.map((src, i) => {
+      const card = document.createElement('div');
+      card.className = 'shot-card';
+      card.innerHTML =
+        '<div class="shot-bar"><i></i><i></i><i></i><span>' + label + '</span></div>' +
+        '<img src="' + src + '" alt="' + label + ' (' + (i + 1) + ')" loading="lazy" decoding="async" draggable="false">';
+      card.querySelector('img').addEventListener('error', function () {
+        this.style.display = 'none';
+        card.classList.add('no-img');
+      });
+      stage.appendChild(card);
+      return card;
+    });
+
+    /* ---- kontrol: penanda angka + panah ---- */
+    const ui = document.createElement('div');
+    ui.className = 'shot-ui';
+    ui.innerHTML =
+      '<span class="shot-count"></span>' +
+      '<div class="shot-btns">' +
+        '<button type="button" class="shot-btn" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
+        '<button type="button" class="shot-btn" aria-label="Berikutnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>' +
+      '</div>';
+    const count = ui.querySelector('.shot-count');
+    const [btnPrev, btnNext] = ui.querySelectorAll('.shot-btn');
+
+    root.append(stage, ui);
+    if (n < 2) ui.style.display = 'none';
+
+    /* ---- urutan tumpukan: order[0] = kartu paling atas ---- */
+    let order = cards.map((_, i) => i);
+    let busy = false;
+
+    const update = () => {
+      count.textContent = String(order[0] + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
+    };
+    const layout = () => order.forEach((ci, pos) => place(cards[ci], pos));
+
+    function next() {
+      if (n < 2 || busy) return;
+      busy = true;
+
+      const topIdx = order[0];
+      const top = cards[topIdx];
+      order = [...order.slice(1), topIdx];
+
+      order.forEach((ci, pos) => { if (ci !== topIdx) place(cards[ci], pos); });   // yang lain maju
+
+      top.style.zIndex = '20';                                                     // kartu atas meluncur keluar
+      top.style.transform = 'translateX(115%) rotate(5deg)';
+      top.style.opacity = '0';
+
+      setTimeout(() => {                                                           // lalu pindah ke belakang tumpukan
+        const pos = order.length - 1;
+        top.style.transition = 'none';
+        place(top, pos);
+        top.style.opacity = '0';
+        void top.offsetWidth;
+        top.style.transition = '';
+        top.style.opacity = opacityFor(pos);
+        busy = false;
+      }, 450);
+
+      update();
+    }
+
+    function prev() {
+      if (n < 2 || busy) return;
+      busy = true;
+
+      const backIdx = order[order.length - 1];
+      const card = cards[backIdx];
+
+      card.style.transition = 'none';                                              // taruh di luar kanan, tanpa animasi
+      card.style.zIndex = '20';
+      card.style.transform = 'translateX(115%) rotate(5deg)';
+      card.style.opacity = '0';
+      void card.offsetWidth;
+      card.style.transition = '';
+
+      order = [backIdx, ...order.slice(0, -1)];
+      layout();                                                                    // meluncur masuk ke paling atas
+
+      setTimeout(() => { busy = false; }, 450);
+      update();
+    }
+
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+
+    /* klik gambar = berikutnya, geser = ganti arah */
+    let startX = null;
+    let dragged = false;
+
+    stage.addEventListener('pointerdown', (e) => { startX = e.clientX; dragged = false; });
+    stage.addEventListener('pointerup', (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 40) { dragged = true; dx < 0 ? next() : prev(); }
+    });
+    stage.addEventListener('pointercancel', () => { startX = null; });
+    stage.addEventListener('click', () => { if (dragged) { dragged = false; return; } next(); });
+
+    stage.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    layout();
+    update();
   });
 })();
 </script>
