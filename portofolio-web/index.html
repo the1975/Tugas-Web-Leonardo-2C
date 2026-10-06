@@ -2246,9 +2246,10 @@ window.addEventListener('resize', () => {
 
   /* ====== 2. KATA MENYALA SATU PER SATU SESUAI SCROLL ====== */
   function update() {
-    const r  = sec.getBoundingClientRect();
+    const r  = text.getBoundingClientRect();
     const vh = window.innerHeight;
-    const p  = reduce ? 1 : Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.8)));   // 0 sampai 1
+    const center = r.top + r.height / 2;
+    const p  = reduce ? 1 : Math.min(1, Math.max(0, (vh * 0.95 - center) / (vh * 0.55)));   // 0 sampai 1   // 0 sampai 1
     const n  = words.length;
 
     words.forEach((w, i) => {
@@ -2644,6 +2645,23 @@ setTimeout(triggerGlitch, 4000);
 
     layout();
     update();
+  });
+})();
+</script>
+
+  <script>
+(() => {
+  const hero = document.querySelector('.hero');
+  const about = document.getElementById('about');
+  if (!hero || !about) return;
+
+  document.querySelectorAll('a[href="#about"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      // posisi asli About = dasar hero + jarak antar kartu (24px), dikurangi 24px biar pas
+      const y = hero.getBoundingClientRect().bottom + window.scrollY + 24 - 24;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
   });
 })();
 </script>
