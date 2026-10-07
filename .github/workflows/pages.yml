@@ -29,7 +29,7 @@ jobs:
       - name: Upload Portfolio
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './portofolio-web'
+          path: './web-porto-bootstrap'
 
       - name: Deploy
         id: deployment
