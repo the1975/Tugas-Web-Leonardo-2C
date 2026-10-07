@@ -203,8 +203,9 @@
 
 /* ==========================================================
    05. HERO: CHIP MINDSET MELAYANG
-   Konten & posisi chip diganti oleh JS (js/script.js bagian 08)
    ========================================================== */
+
+/* 1. Base chip */
 .hero-chip-glitch {
   width: max-content;
   height: auto;
@@ -224,31 +225,32 @@
   text-overflow: ellipsis;
 }
 
-/* Efek glitch sesaat ketika chip diklik */
+/* 2. Melayang naik-turun: pakai `translate` supaya tidak bentrok dengan glitch (`transform`) */
+@keyframes float-y {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -8px; }
+}
+.hero-chip-glitch.float-slow   { animation: float-y 5s ease-in-out infinite,       syncGlitch 8s infinite; }
+.hero-chip-glitch.float-slower { animation: float-y 6.5s ease-in-out -2s infinite, syncGlitch 8s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-chip-glitch.float-slow,
+  .hero-chip-glitch.float-slower { animation: none; }
+}
+
+/* 3. Glitch sesaat ketika chip diklik (HARUS di bawah float, supaya menang) */
 .hero-chip-glitch.mindset-change { animation: mindsetChipChange .4s steps(2) both; }
 @keyframes mindsetChipChange {
-  0%   { transform: translate(0);     filter: none; }
+  0%   { transform: translate(0);      filter: none; }
   25%  { transform: translate(-3px,0); filter: contrast(1.4); }
   50%  { transform: translate(3px,0);  filter: contrast(1.7); }
   75%  { transform: translate(-1px,0); }
-  100% { transform: translate(0);     filter: none; }
+  100% { transform: translate(0);      filter: none; }
 }
 
-/* Chip tidak ditampilkan di HP */
+/* 4. Chip tidak ditampilkan di HP */
 @media (max-width: 768px) {
   .hero-chip-glitch { display: none !important; }
-}
-
-/* Animasi melayang naik-turun */
-@keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-.float-slow   { animation: float-y 5s ease-in-out infinite; }
-.float-slower { animation: float-y 6.5s ease-in-out infinite; animation-delay: -2s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .float-slow, .float-slower { animation: none; }
 }
 
 
