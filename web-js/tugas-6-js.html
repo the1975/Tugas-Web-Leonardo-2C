@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Operator Pembanding</title>
+    <title>Perulangan JavaScript</title>
 </head>
 <body>
-  <h1>Tugas 6 JavaScript Operator Pembanding</h1>
   
     <script type="text/javascript">
-        let a = 3;
-        document.write('a = '+a+'<br>');
-        let b = 2;
-        document.write('b = '+b+'<br>');
-        let c;
+      //perulangan for
+        for( let i=1; i<=10; i++) {
  
-        //sama dengan
-        c = a == b;
-        document.write('a == b = '+c+'<br>');
+            document.write('<p>Angka ke - '+i+'</p>');
  
-        //lebih besar
-        c = a > b;
-        document.write('a > b = '+c+'<br>');
- 
-        //lebih besar sama dengan
-        c = a >= b;
-        document.write('a >= b = '+c+'<br>');
- 
-        //kurang dari
-        c = a < b;
-        document.write('a < b = '+c+'<br>');
- 
-        //kurang dari sama dengan
-        c = a <= b;
-        document.write('a <= b = '+c+'<br>');
- 
-        //tidak sama dengan
-        c = a != b;
-        document.write('a != b = '+c+'<br>');
+        } 
  
     </script>
+
+
+      <script type="text/javascript">
+
+      //perulangan while
+        let a=0;
+ 
+        while(a<10) {
+ 
+            document.write('<p>Tulisan ini diulang 10 kali</p>');
+ 
+            a+=1;
+        }
+    </script>
+
+  <script type="text/javascript">
+    //perulangan do while
+        let b=0;
+ 
+        do {
+ 
+            document.write('<p>Angka ke - '+b+'</p>');
+ 
+            b+=1;
+ 
+        } while(b<10);
+    </script>
+
+  <script type="text/javascript">
+         // perulangan foreach
+        document.write('<h2>Daftar Siswa</h2>');
+ 
+        let siswa = ['ani', 'budi', 'sigit', 'faris'];
+         
+        siswa.forEach(function(i){
+            document.write('<p>'+i+'</p>');
+        });     
+ 
+    </script>
+  
  
 </body>
 </html>
